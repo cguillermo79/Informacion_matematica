@@ -1,0 +1,644 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{geometry}
+\geometry{top=1.8cm,bottom=1.8cm,left=1.8cm,right=1.8cm}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{ragged2e}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+
+% Configuracion de hyperref
+\hypersetup{
+    colorlinks=true,
+    linkcolor=azulOscuro,
+    filecolor=magenta,      
+    urlcolor=unlbluelight,
+    citecolor=verdeBosque
+}
+
+% Definicion de columnas tabulares
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+
+% Paleta de colores institucional
+\definecolor{unlbluelight}{RGB}{0,86,145}
+\definecolor{azulOscuro}{RGB}{12,43,92}
+\definecolor{verdeBosque}{RGB}{27,107,74}
+\definecolor{rojoAlerta}{RGB}{179,38,30}
+\definecolor{doradoUNL}{RGB}{197,143,39}
+\definecolor{grisFondo}{RGB}{247,249,252}
+\definecolor{grisBorde}{RGB}{209,217,230}
+
+% Cabeceras y pies de pagina
+\setlength{\headheight}{22pt}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.8pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{unlbluelight}\leaders\hrule height \headrulewidth\hfill}}
+\fancyhead[L]{\footnotesize\textbf{\color{unlbluelight}UNIVERSIDAD NACIONAL DE LOJA} $\vert$ Ing. Ambiental}
+\fancyhead[R]{\footnotesize\textbf{Matemática II} $\vert$ Guía del Proyecto Integrador}
+\fancyfoot[L]{\footnotesize Ciclo Sep 2026 -- Feb 2027}
+\fancyfoot[C]{\footnotesize Proyecto Integrador: Modelación con Cálculo Integral}
+\fancyfoot[R]{\footnotesize Pág. \thepage}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \fancyfoot[L]{\footnotesize Ciclo Sep 2026 -- Feb 2027}%
+  \fancyfoot[C]{\footnotesize Proyecto Integrador: Modelación con Cálculo Integral}%
+  \fancyfoot[R]{\footnotesize Pág. \thepage}%
+}
+
+% Formato de secciones compacto y elegante
+\titleformat{\section}{\large\bfseries\color{azulOscuro}}{\thesection.}{0.5em}{}[\titlerule]
+\titleformat{\subsection}{\normalsize\bfseries\color{unlbluelight}}{\thesubsection.}{0.4em}{}
+\titleformat{\subsubsection}{\small\bfseries\color{verdeBosque}}{\thesubsubsection.}{0.3em}{}
+
+\titlespacing*{\section}{0pt}{9pt}{4pt}
+\titlespacing*{\subsection}{0pt}{7pt}{3pt}
+\titlespacing*{\subsubsection}{0pt}{5pt}{2pt}
+
+% Cajas de diseno
+\newtcolorbox{bannerbox}[1][]{
+  colback=azulOscuro, colframe=azulOscuro, arc=4pt, boxrule=1pt,
+  fonttitle=\bfseries\color{white}, colbacktitle=azulOscuro,
+  top=6pt, bottom=6pt, left=8pt, right=8pt, breakable, #1
+}
+
+\newtcolorbox{conceptbox}[1][]{
+  colback=grisFondo, colframe=unlbluelight, arc=3pt, boxrule=1pt,
+  fonttitle=\bfseries\color{white}, colbacktitle=unlbluelight,
+  top=5pt, bottom=5pt, left=8pt, right=8pt, breakable, #1
+}
+
+\newtcolorbox{examplebox}[1][]{
+  colback=green!3!white, colframe=verdeBosque, arc=3pt, boxrule=1pt,
+  fonttitle=\bfseries\color{white}, colbacktitle=verdeBosque,
+  top=5pt, bottom=5pt, left=8pt, right=8pt, breakable, #1
+}
+
+\newtcolorbox{alertbox}[1][]{
+  colback=red!3!white, colframe=rojoAlerta, arc=3pt, boxrule=1pt,
+  fonttitle=\bfseries\color{white}, colbacktitle=rojoAlerta,
+  top=5pt, bottom=5pt, left=8pt, right=8pt, breakable, #1
+}
+
+\newtcolorbox{guidelinebox}[1][]{
+  colback=yellow!5!white, colframe=doradoUNL, arc=3pt, boxrule=1pt,
+  fonttitle=\bfseries\color{white}, colbacktitle=doradoUNL,
+  top=5pt, bottom=5pt, left=8pt, right=8pt, breakable, #1
+}
+
+\begin{document}
+\thispagestyle{plain}
+
+% ============================================================
+% ENCABEZADO INSTITUCIONAL FORMAL
+% ============================================================
+\begin{center}
+  {\Large\textbf{\color{azulOscuro}UNIVERSIDAD NACIONAL DE LOJA}}\vspace{0.10cm}\\
+  {\large\textbf{\color{unlbluelight}FACULTAD AGROPECUARIA Y DE RECURSOS NATURALES RENOVABLES}}\vspace{0.06cm}\\
+  {\normalsize\textbf{CARRERA DE INGENIERÍA AMBIENTAL}}\vspace{0.10cm}\\
+  {\small Período Académico: Septiembre 2026 -- Febrero 2027 $\quad\vert\quad$ Modalidad: Presencial}
+\end{center}
+
+\vspace{0.10cm}
+
+\begin{bannerbox}
+  \centering\color{white}
+  {\Large\bfseries GUÍA GENERAL DEL PROYECTO INTEGRADOR DE ASIGNATURA}\\[0.12cm]
+  {\normalsize\textbf{MATEMÁTICA II: CÁLCULO INTEGRAL APLICADO A LA INGENIERÍA AMBIENTAL}}\\[0.08cm]
+  {\small\textbf{Modelación Territorial con Datos Georreferenciados del Cantón Loja (2019--2024)}}\\[0.10cm]
+  {\footnotesize\textbf{Docente Responsable:} Ing. Guillermo Chuncho $\quad\vert\quad$ \textbf{Ponderación:} 25\% por Unidad (2.50 / 10.00 pts)}
+\end{bannerbox}
+
+\vspace{0.20cm}
+
+% ============================================================
+% 1. PRESENTACION Y PROPOSITO DEL PROYECTO
+% ============================================================
+\section{Presentación y Propósito Formativo}
+
+El Proyecto Integrador de la asignatura \textbf{Matemática II} articula de forma rigurosa los conceptos, teoremas y métodos analíticos del \textbf{Cálculo Integral} con problemáticas ambientales reales, cuantitativas y espacialmente explícitas del cantón Loja. Lejos de constituir un ejercicio abstracto o descontextualizado, el proyecto exige que el estudiante de Ingeniería Ambiental actúe como un modelador técnico capaz de transformar mediciones territoriales en funciones continuas, perfiles orográficos, balances de masa hídrica, dinámicas temporales de cobertura y zonificaciones de riesgo ecológico.
+
+A lo largo del semestre académico (Septiembre 2026 -- Febrero 2027), cada equipo de trabajo analiza de manera continua un bloque temático de datos reales georreferenciados en una cuadrícula territorial estandarizada de \textbf{celdas espaciales de 500 metros de resolución} ($25\,\text{ha}$ por celda) durante un horizonte temporal de 72 meses continuos (enero de 2019 a diciembre de 2024).
+
+\begin{conceptbox}[title=Propósito Formativo del Proyecto Integrador]
+Capacitar al futuro Ingeniero Ambiental en la deducción matemática formal, el modelado funcional continuo a partir de datos discretos y la resolución analítica y numérica de integrales (indefinidas, definidas, métodos avanzados de integración, integrales impropias y múltiples) para resolver problemas reales de relieve, cobertura vegetal, hidroclimatología y riesgo de incendios forestales, garantizando la reproducibilidad computacional y la defensa oral individual rigurosa de cada resultado.
+\end{conceptbox}
+
+\subsection{Alcance Oficial de los Datos y Repositorio Institucional}
+\begin{itemize}[leftmargin=*,itemsep=1.5pt]
+  \item \textbf{Unidad de observación territorial:} Celdas espaciales UTM (resolución fija de $500\,\text{m} \times 500\,\text{m} = 25\,\text{ha}$) evaluadas mensualmente.
+  \item \textbf{Horizonte temporal autorizado:} Enero de 2019 a diciembre de 2024 (72 meses de monitoreo).
+  \item \textbf{Restricción estricta del año 2025:} Los datos de 2025 no deben incorporarse; se encuentran estrictamente reservados como conjunto de prueba fuera de tiempo (OOT) para validación científica docente.
+  \item \textbf{Integridad de las fuentes de datos:} Los archivos CSV originales \textbf{no deben ser modificados ni sobreescritos}. Toda limpieza, filtrado, normalización y cálculo se realizará mediante código reproducible en Python o R.
+  \item \textbf{Repositorio Oficial de Datos en GitHub (Acceso Público Directo):} \\
+  \href{https://github.com/cguillermo79/Informacion_matematica/tree/main/bases_datos_proyecto_integrador}{Repositorio GitHub: \texttt{Informacion\_matematica/bases\_datos\_proyecto\_integrador}}
+\end{itemize}
+
+% ============================================================
+% 2. ASIGNACION DEFINITIVA DE EQUIPOS Y REGLA TERRITORIAL
+% ============================================================
+\section{Asignación Oficial de Equipos, Integrantes y Regla Territorial}
+
+Los 29 estudiantes matriculados en la asignatura han sido organizados en \textbf{7 equipos de trabajo} (seis equipos de 4 integrantes y un equipo de 5 integrantes). Cada equipo tiene asignado un bloque temático, una zona geográfica exclusiva y una base de datos específica:
+
+\begin{table}[h!]
+\centering
+\scriptsize
+\renewcommand{\arraystretch}{1.03}
+\begin{tabularx}{\textwidth}{C{0.8cm} L{3.5cm} L{3.3cm} C{1.1cm} C{1.8cm} C{1.1cm} Y}
+\toprule
+\textbf{Eq.} & \textbf{Integrantes (Nómina Oficial)} & \textbf{Bloque Temático} & \textbf{Zona} & \textbf{Regla Espacial} & \textbf{Celdas} & \textbf{Carpeta en Repositorio GitHub} \\
+\midrule
+\textbf{1} & 
+\textbullet{} Toledo Merino Jhanine\newline
+\textbullet{} Moreno Vera Mayerly\newline
+\textbullet{} González Castillo Carlos\newline
+\textbullet{} Barreto Zapata Dulce & 
+Relieve y accesibilidad: elevación, pendiente, rugosidad y distancias a vías/poblados. & 
+Norte & 
+$\text{centro\_y} \ge 9555250$ & 
+4.001 & 
+\texttt{equipo\_01\_relieve\_} \newline \texttt{zona\_norte/} \newline (288.072 reg, 66 col) \\
+\midrule
+\textbf{2} & 
+\textbullet{} Saritama Maldonado Bárbara\newline
+\textbullet{} Guamán Aguirre Yulian\newline
+\textbullet{} Cevallos Azanza Kristel\newline
+\textbullet{} Medina Yaguana Ana & 
+Relieve y accesibilidad: elevación, pendiente, rugosidad y distancias a vías/poblados. & 
+Sur & 
+$\text{centro\_y} < 9555250$ & 
+3.996 & 
+\texttt{equipo\_02\_relieve\_} \newline \texttt{zona\_sur/} \newline (287.712 reg, 66 col) \\
+\midrule
+\textbf{3} & 
+\textbullet{} Gálvez Cornejo Jamileth\newline
+\textbullet{} Riofrío Medina Yurixi\newline
+\textbullet{} Japón Caillagua Ibelia\newline
+\textbullet{} Chalán Jumbo Shislayne & 
+Cobertura vegetal y uso del suelo: bosque, páramo, agrícola e índices NDVI, NDMI, NBR. & 
+Norte & 
+$\text{centro\_y} \ge 9555250$ & 
+4.001 & 
+\texttt{equipo\_03\_cobertura\_} \newline \texttt{zona\_norte/} \newline (288.072 reg, 53 col) \\
+\midrule
+\textbf{4} & 
+\textbullet{} Cajamarca Gordillo Carlos\newline
+\textbullet{} Jiménez Macau Kevin\newline
+\textbullet{} Pullaguari Cuenca Nelson\newline
+\textbullet{} Cárdenas Campoverde Diana & 
+Cobertura vegetal y uso del suelo: bosque, páramo, agrícola e índices NDVI, NDMI, NBR. & 
+Sur & 
+$\text{centro\_y} < 9555250$ & 
+3.996 & 
+\texttt{equipo\_04\_cobertura\_} \newline \texttt{zona\_sur/} \newline (287.712 reg, 53 col) \\
+\midrule
+\textbf{5} & 
+\textbullet{} Rodríguez Jaramillo Sonia\newline
+\textbullet{} Rojas Vega Yanira\newline
+\textbullet{} Verdesoto Ortiz Alejandra\newline
+\textbullet{} Llivisaca Montoya Diana & 
+Clima y condiciones atmosféricas: precipitación CHIRPS, viento y días secos/húmedos. & 
+Norte & 
+$\text{centro\_y} \ge 9555250$ & 
+4.001 & 
+\texttt{equipo\_05\_clima\_} \newline \texttt{zona\_norte/} \newline (288.072 reg, 57 col) \\
+\midrule
+\textbf{6} & 
+\textbullet{} Chamba Mendoza Isidro\newline
+\textbullet{} Jiménez Troya John\newline
+\textbullet{} Aguilar Arteaga Andy\newline
+\textbullet{} Chamba Sánchez Giorgi & 
+Clima y condiciones atmosféricas: precipitación CHIRPS, viento y días secos/húmedos. & 
+Sur & 
+$\text{centro\_y} < 9555250$ & 
+3.996 & 
+\texttt{equipo\_06\_clima\_} \newline \texttt{zona\_sur/} \newline (287.712 reg, 57 col) \\
+\midrule
+\textbf{7} & 
+\textbullet{} Aguilar Franco Adrián\newline
+\textbullet{} Landacay Hidalgo Jorge\newline
+\textbullet{} Medina Gualán Lady\newline
+\textbullet{} Narváez Macas Jhonny\newline
+\textbullet{} Salazar Valdiviezo Lisseth & 
+Incendios forestales y riesgo: ocurrencia de fuego VIIRS, severidad y recurrencia. & 
+Cantón Loja Completo & 
+Norte y Sur (Todas las celdas) & 
+7.997 & 
+\texttt{equipo\_07\_incendios\_} \newline \texttt{loja\_completo/} \newline (575.784 reg, 41 col) \\
+\bottomrule
+\end{tabularx}
+\caption{Distribución definitiva de equipos, integrantes, zonas y bases autorizadas.}
+\label{tab:distribucion_equipos}
+\end{table}
+
+\begin{alertbox}[title=Regla Territorial Fundamental para Temas Compartidos]
+\textbf{Los equipos pares (1--2, 3--4, 5--6) comparten bloque temático y variables, pero NO comparten trabajo ni datos:}
+\begin{enumerate}[leftmargin=*,itemsep=1pt]
+  \item Cada equipo trabaja de forma \textbf{autónoma} sobre su zona geográfica asignada:
+  \textbf{Zona Norte} ($\text{centro\_y} \ge 9555250.0\,\text{m}$, $4.001$ celdas) o \textbf{Zona Sur} ($\text{centro\_y} < 9555250.0\,\text{m}$, $3.996$ celdas). El Equipo 7 abarca todo el cantón ($7.997$ celdas).
+  \item Las bases ya se encuentran filtradas espacialmente en GitHub. Está prohibido alterar la delimitación o cruzar datos entre zonas.
+  \item Cada equipo formula su propia pregunta, diseña sus modelos analíticos y calibra sus parámetros numéricos.
+  \item \textbf{Contraste al cierre de cada unidad:} Al concluir la unidad, los equipos pares comparan y discuten sus resultados numéricos (por ejemplo, diferencias de área orográfica, volumen de lluvia o cambio de biomasa entre el Norte y el Sur).
+\end{enumerate}
+\end{alertbox}
+
+% ============================================================
+% 3. RETOS CIENTIFICOS Y TAREAS ESPECIFICAS POR EQUIPO
+% ============================================================
+\section{Preguntas Guía y Tareas Específicas por Equipo}
+
+A continuación se detalla el trabajo requerido para cada equipo, estructurado en torno a las competencias del Cálculo Integral:
+
+\subsection{Equipos 1 y 2: Relieve y Accesibilidad Territorial (Norte y Sur)}
+\begin{guidelinebox}[title=Pregunta Guía Central]
+¿Cuál es el área bajo el perfil de elevación de una ladera crítica del cantón Loja y qué distancia acumulada real recorre una ruta de acceso a través de la topografía quebrada?
+\end{guidelinebox}
+
+\begin{itemize}[leftmargin=*,itemsep=1.5pt]
+  \item \textbf{Características de los datos:} Las variables de relieve (\texttt{dem\_mean}, \texttt{slope\_mean}, \texttt{aspect\_sin}, \texttt{dist\_vias\_m}, \texttt{dist\_asentamientos\_m}) son estáticas. El análisis debe realizarse sobre el inventario espacial único de celdas de la zona ($4.001$ celdas en el Norte y $3.996$ celdas en el Sur).
+  \item \textbf{Desarrollo en la Unidad 1 (Fundamentos y Formulación):}
+  \begin{itemize}
+    \item Seleccionar un transecto representativo en su zona territorial que conecte una cuenca baja con una cumbre orográfica.
+    \item Ajustar un modelo funcional continuo de elevación $z = f(x)$ en función de la coordenada horizontal de avance $x$.
+    \item Formular y calcular el área bajo la curva topográfica $A = \int_{a}^{b} f(x)\,dx$ interpretando su significado físico como área de sección transversal del relieve. Comparar la aproximación mediante sumas de Riemann con el Teorema Fundamental del Cálculo.
+  \end{itemize}
+  \item \textbf{Desarrollo en la Unidad 2 (Métodos de Integración):}
+  \begin{itemize}
+    \item Determinar la longitud de trayectoria real sobre la ladera mediante la integral de longitud de arco:
+    \begin{equation*}
+      L = \int_{a}^{b} \sqrt{1 + [f'(x)]^2}\,dx
+    \end{equation*}
+    resolviendo la integral mediante sustitución trigonométrica o aproximación analítica avanzada.
+    \item Formular un índice de accesibilidad continua combinando la pendiente instantánea $f'(x)$ y las distancias euclidianas.
+  \end{itemize}
+  \item \textbf{Desarrollo en la Unidad 3 (Volúmenes y Aplicaciones Físicas):}
+  \begin{itemize}
+    \item Estimar el volumen orográfico de una cuenca mediante secciones transversales paralelas $V = \int_{a}^{b} A(x)\,dx$ o dobles integrales sobre la cuadrícula territorial.
+    \item Contrastar formalmente los resultados entre el Norte y el Sur (comparación de pendientes medias, longitudes de arco y áreas orográficas).
+  \end{itemize}
+\end{itemize}
+
+\subsection{Equipos 3 y 4: Cobertura Vegetal y Uso del Suelo (Norte y Sur)}
+\begin{guidelinebox}[title=Pregunta Guía Central]
+¿Cómo se acumula el cambio del área de cobertura vegetal en el tiempo a lo largo de 72 meses, integrando la tasa instantánea de variación de los índices espectrales y coberturas nativas?
+\end{guidelinebox}
+
+\begin{itemize}[leftmargin=*,itemsep=1.5pt]
+  \item \textbf{Características de los datos:} Se combinan proporciones estáticas de referencia MAATE (bosque nativo, páramo, suelo agropecuario, plantaciones) con series dinámicas mensuales de Sentinel-2 (NDVI, NDMI, NBR, NDWI). Se deben validar rigurosamente los campos de calidad \texttt{disponible\_sentinel\_t1} y \texttt{cobertura\_valida}.
+  \item \textbf{Desarrollo en la Unidad 1 (Fundamentos y Formulación):}
+  \begin{itemize}
+    \item Modelar la tasa mensual de variación del verdor o cobertura vegetal $r(t) = \frac{dA}{dt}$ en periodos estacionales secos y lluviosos.
+    \item Formular el cambio neto acumulado de cobertura vegetal como la integral definida de dicha tasa:
+    \begin{equation*}
+      \Delta A_{\text{veg}} = \int_{t_1}^{t_2} r(t)\,dt = A(t_2) - A(t_1)
+    \end{equation*}
+    \item Justificar la relación entre la acumulación neta y el Teorema Fundamental del Cálculo frente a mediciones discretas.
+  \end{itemize}
+  \item \textbf{Desarrollo en la Unidad 2 (Métodos de Integración):}
+  \begin{itemize}
+    \item Ajustar funciones no lineales continuas con componentes armónicos (funciones trigonométricas) para modelar la ciclicidad fenológica de la vegetación andina.
+    \item Resolver integrales de déficit o ganancia de biomasa mediante integración por partes y potencias trigonométricas.
+  \end{itemize}
+  \item \textbf{Desarrollo en la Unidad 3 (Integración Espacial y Balances):}
+  \begin{itemize}
+    \item Cuantificar la superficie total degradada o regenerada en hectáreas acumuladas mediante integrales dobles sobre el dominio espacial de celdas: $A_{\text{total}} = \iint_{\Omega} I_{\text{cambio}}(x,y)\,dA$.
+    \item Comparar cuantitativamente la estabilidad de coberturas entre la Zona Norte y la Zona Sur de Loja.
+  \end{itemize}
+\end{itemize}
+
+\subsection{Equipos 5 y 6: Clima y Condiciones Atmosféricas (Norte y Sur)}
+\begin{guidelinebox}[title=Pregunta Guía Central]
+¿Cuál es el volumen acumulado de precipitación en un periodo hidrológico crítico, obtenido como integral de la tasa de lluvia, y qué fuerza ejerce la escorrentía sobre las laderas?
+\end{guidelinebox}
+
+\begin{itemize}[leftmargin=*,itemsep=1.5pt]
+  \item \textbf{Características de los datos:} Series mensuales de precipitación CHIRPS (\texttt{chirps\_precip\_mm}), días secos, días húmedos, velocidad del viento CHELSA (\texttt{chelsa\_wind\_speed\_mean}) y resúmenes antecedentes (\texttt{prev2m}, \texttt{prev3m}). Validar \texttt{chirps\_historia\_3m\_completa}.
+  \item \textbf{Desarrollo en la Unidad 1 (Fundamentos y Formulación):}
+  \begin{itemize}
+    \item Tratar la precipitación registrada como una tasa de acumulación de lámina de agua por unidad de tiempo: $p(t) = \frac{dh}{dt}\,[\text{mm/mes}]$.
+    \item Formular la altura acumulada en un semestre o año crítico como la integral definida: $H = \int_{t_a}^{t_b} p(t)\,dt$.
+    \item Calcular el volumen pluvial caído sobre una celda territorial estándar de $25\,\text{ha}$ ($250.000\,\text{m}^2$):
+    \begin{equation*}
+      V_{\text{celda}} = A_{\text{celda}} \times 10^{-3} \int_{t_a}^{t_b} p(t)\,dt \quad [\text{m}^3]
+    \end{equation*}
+  \end{itemize}
+  \item \textbf{Desarrollo en la Unidad 2 (Métodos de Integración):}
+  \begin{itemize}
+    \item Modelar eventos de precipitaciones extremas o estiaje prolongado mediante funciones compuestas (exponenciales combinadas con polinomios).
+    \item Resolver analíticamente las integrales de balance hídrico utilizando el método de sustitución y fracciones parciales en modelos de retención del suelo.
+  \end{itemize}
+  \item \textbf{Desarrollo en la Unidad 3 (Física de Fluidos y Volúmenes de Cuenca):}
+  \begin{itemize}
+    \item Estimar el volumen global de precipitación en toda la zona mediante la integral doble de la superficie de precipitación: $V_{\text{total}} = \iint_{\Omega} P(x,y)\,dx\,dy$.
+    \item Calcular la fuerza hidrostática y la presión de fluido $F = \int \rho g h(y) w(y)\,dy$ en cauces y canales receptores.
+    \item Comparar el régimen hidroclimático del Norte frente al Sur del cantón Loja.
+  \end{itemize}
+\end{itemize}
+
+\subsection{Equipo 7: Incendios Forestales y Modelación del Riesgo (Cantón Loja Completo)}
+\begin{guidelinebox}[title=Pregunta Guía Central]
+¿Cuál es el área acumulada afectada en el tiempo por incendios forestales en el cantón Loja, integrando la tasa de propagación y la energía de combustión liberada?
+\end{guidelinebox}
+
+\begin{itemize}[leftmargin=*,itemsep=1.5pt]
+  \item \textbf{Características de los datos:} Cobertura cantonal completa ($7.997$ celdas espaciales y $575.784$ registros). Variable de fuego prioritaria: \texttt{y\_incendio\_ge7\_obs90} junto con el filtro de validez \texttt{y\_principal\_valida}.
+  \item \textbf{Desarrollo en la Unidad 1 (Fundamentos y Formulación):}
+  \begin{itemize}
+    \item Determinar la tasa mensual de propagación o número de celdas afectadas por unidad de tiempo: $r_{\text{fuego}}(t)$ [ha/mes].
+    \item Formular el área acumulada quemada como la integral definida de la tasa de afectación:
+    \begin{equation*}
+      A_{\text{quemada}}(t) = \int_{0}^{t} r_{\text{fuego}}(\tau)\,d\tau
+    \end{equation*}
+    \item Demostrar analíticamente cómo el Teorema Fundamental del Cálculo conecta la tasa instantánea de fuego con el área acumulada total.
+  \end{itemize}
+  \item \textbf{Desarrollo en la Unidad 2 (Métodos de Integración):}
+  \begin{itemize}
+    \item Modelar el avance del fuego mediante funciones sigmoideas o logísticas de crecimiento durante temporadas críticas (agosto--noviembre).
+    \item Resolver analíticamente las integrales de propagación mediante fracciones parciales y sustitución algebraica.
+  \end{itemize}
+  \item \textbf{Desarrollo en la Unidad 3 (Física del Fuego, Trabajo y Zonificación Cantonal):}
+  \begin{itemize}
+    \item Modelar el trabajo mecánico y la liberación calórica del frente de fuego mediante integrales de trayectoria territorial.
+    \item Generar un mapa integral de susceptibilidad cantonal, integrando espacialmente los resultados de relieve (Equipos 1--2), cobertura vegetal (Equipos 3--4) y clima (Equipos 5--6).
+  \end{itemize}
+\end{itemize}
+
+% ============================================================
+% 4. HOJA DE RUTA Y ENTREGABLES POR UNIDAD
+% ============================================================
+\section{Estructura de Entregables, Fases Evaluativas y Cronograma}
+
+El Proyecto Integrador constituye el \textbf{25\% de la calificación total de cada unidad} ($2{,}50$ puntos sobre $10{,}00$ en la Unidad 1, Unidad 2 y Unidad 3). En cada una de las tres unidades del ciclo académico, el proyecto se califica a través de las siguientes \textbf{cuatro fases evaluativas}:
+
+\begin{table}[h!]
+\centering
+\small
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{C{1.5cm} L{3.5cm} C{2.2cm} Y}
+\toprule
+\textbf{Fase} & \textbf{Nombre de la Fase} & \textbf{Ponderación} & \textbf{Descripción del Desempeño y Criterio de Calificación} \\
+\midrule
+\textbf{Fase 1} & Formulación y Delimitación & \textbf{3\% (0,30 pts)} & Delimitación del problema territorial, selección de variables de la zona, pregunta guía adaptada y marco matemático inicial. \\
+\textbf{Fase 2} & Avance Técnico y Datos & \textbf{4\% (0,40 pts)} & Limpieza y exploración con código reproducible, verificación de calidad de sensores, tablas estadísticas y aproximación inicial. \\
+\textbf{Fase 3} & Producto Técnico Formal & \textbf{10\% (1,00 pt)} & Documento formal en \LaTeX{} bajo normas APA 7ma ed., deducción analítica paso a paso, cálculo manual de control y código reproducible. \\
+\textbf{Fase 4} & Defensa Oral Individual & \textbf{8\% (0,80 pts)} & Sustentación oral individual en vivo. Defensa de conceptos matemáticos y resolución obligatoria de una \textbf{prueba de modificación en vivo}. \\
+\midrule
+\multicolumn{2}{l}{\textbf{Total Proyecto Integrador por Unidad}} & \textbf{25\% (2,50 pts)} & \textbf{Aporte al promedio oficial de la unidad académica.} \\
+\bottomrule
+\end{tabularx}
+\caption{Esquema evaluativo de las 4 fases del Proyecto Integrador en cada unidad.}
+\end{table}
+
+\subsection{Cronograma Oficial de Entregables -- Unidad 1}
+\textbf{Enfoque de Unidad 1:} Fundamentos del Cálculo Integral, La Integral Indefinida, La Integral Definida y Teorema Fundamental del Cálculo.
+
+\begin{table}[h!]
+\centering
+\scriptsize
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{C{1.3cm} C{2.4cm} L{3.4cm} Y}
+\toprule
+\textbf{Semana} & \textbf{Fecha Oficial} & \textbf{Fase / Hito Evaluativo} & \textbf{Entregable Formal Requerido} \\
+\midrule
+Semana 1 & 28-sep al 01-oct & Inducción e Instalación & Conformación oficial de equipos, clonación del repositorio GitHub y verificación de integridad de datos. \\
+Semana 2 & \textbf{Jueves 08-oct} & \textbf{Fase 1: Formulación (3\%)} & Documento técnico de delimitación del problema, pregunta central, variables seleccionadas y definición de unidades de medida. \\
+Semana 3 & \textbf{Jueves 15-oct} & \textbf{Fase 2: Avance (4\%)} & Script/cuaderno de limpieza y exploración con datos de su zona territorial, verificación de calidad y planteamiento inicial de la integral. \\
+Semana 4 & \textbf{Jueves 22-oct} & \textbf{Fase 3: Producto Técnico (10\%)} & \textbf{Informe de Formulación del Proyecto en \LaTeX{}}: Planteamiento del problema, hipótesis, objetivos, marco de variables y modelo analítico inicial. \\
+Semana 5 & \textbf{Jueves 29-oct} & \textbf{Fase 4: Defensa Individual (8\%)} & Sustentación oral individual en pizarra/computador con prueba de modificación paramétrica en vivo. \\
+Semana 6 & 02-nov al 05-nov & Síntesis de Unidad 1 & Retroalimentación general y preparación para el Examen de Unidad (35\%). Registro de calificaciones: 10 al 16-nov. \\
+\bottomrule
+\end{tabularx}
+\caption{Cronograma de hitos evaluativos de la Unidad 1.}
+\end{table}
+
+\subsection{Cronograma Oficial de Entregables -- Unidad 2}
+\textbf{Enfoque de Unidad 2:} Técnicas de Integración (sustitución, partes, trigonométricas, fracciones parciales) e Integrales Dobles preliminares.
+
+\begin{table}[h!]
+\centering
+\scriptsize
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{C{1.3cm} C{2.4cm} L{3.4cm} Y}
+\toprule
+\textbf{Semana} & \textbf{Fecha Oficial} & \textbf{Fase / Hito Evaluativo} & \textbf{Entregable Formal Requerido} \\
+\midrule
+Semana 1 & 12-nov / 13-nov & Retroalimentación e Inicio U2 & Ajuste de funciones continuas y selección del método analítico de integración según la geometría o estacionalidad ambiental. \\
+Semana 2 & \textbf{19-nov / 20-nov} & \textbf{Fase 1: Formulación (3\%)} & Formulación analítica de modelos matemáticos continuos no lineales que requieran técnicas de sustitución o partes. \\
+Semana 3 & \textbf{26-nov / 27-nov} & \textbf{Fase 2: Avance (4\%)} & Avance de la resolución analítica paso a paso y contraste con métodos numéricos computacionales. \\
+Semana 4 & \textbf{03-dic / 04-dic} & \textbf{Fase 3: Producto Técnico (10\%)} & \textbf{Informe de Metodología del Proyecto en \LaTeX{}}: Desarrollo analítico paso a paso de las integrales, cálculo manual de control y código reproducible. \\
+-- & 21-dic al 04-ene & Receso Académico Institucional & Receso de fin de año (preparación y consolidación técnica independiente). \\
+Semana 5 & \textbf{05-ene / 06-ene} & \textbf{Fase 4: Defensa Individual (8\%)} & Sustentación individual oral con justificación matemática de los métodos aplicados y modificación en vivo. \\
+Semana 6 & 07-ene-2027 & Examen de Unidad 2 & Examen de fin de Unidad 2 (35\%). Registro de calificaciones: 08 al 14-ene-2027. \\
+\bottomrule
+\end{tabularx}
+\caption{Cronograma de hitos evaluativos de la Unidad 2.}
+\end{table}
+
+\subsection{Cronograma Oficial de Entregables -- Unidad 3}
+\textbf{Enfoque de Unidad 3:} Aplicaciones Físico-Ambientales de la Integral (volúmenes de sólidos y cuencas, trabajo mecánico, presión y fuerza de fluidos, balances territoriales consolidados).
+
+\begin{table}[h!]
+\centering
+\scriptsize
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{C{1.3cm} C{2.4cm} L{3.4cm} Y}
+\toprule
+\textbf{Semana} & \textbf{Fecha Oficial} & \textbf{Fase / Hito Evaluativo} & \textbf{Entregable Formal Requerido} \\
+\midrule
+Semana 1 & 11-ene / 13-ene & Inicio U3 / Formulación & \textbf{Fase 1 -- Formulación (3\%)}: Definición del modelo físico aplicado (volumen total de cuenca, empuje de fluido o energía de propagación). \\
+Semana 2 & 18-ene / 20-ene & Avance Metodológico & \textbf{Fase 2 -- Avance (4\%)}: Cálculo de integrales dobles y acumulados físicos sobre la serie temporal completa de 72 meses. \\
+Semana 3 & \textbf{25-ene / 27-ene} & \textbf{Fase 3: Producto Técnico (10\%)} & \textbf{Informe Final Consolidado en \LaTeX{}}: Documento integral articulado (U1, U2 y U3), mapas espaciales, análisis comparativo Norte vs Sur, sensibilidad y conclusiones ambientales. \\
+Semana 4 & \textbf{01-feb / 04-feb} & \textbf{Fase 4: Defensa Final (8\%)} & Sustentación oral final individual ante tribunal docente. Examen de fin de Unidad 3 (35\%). \\
+-- & 05-feb al 15-feb & Registro de Notas U3 & Pase de calificaciones institucional. Exámenes de recuperación: 08 al 12-mar-2027. \\
+\bottomrule
+\end{tabularx}
+\caption{Cronograma de hitos evaluativos de la Unidad 3.}
+\end{table}
+
+% ============================================================
+% 4.4 ESTRUCTURA OBLIGATORIA DEL INFORME POR UNIDAD
+% ============================================================
+\subsection{Estructura Obligatoria del Informe Escrito por Unidad Académica}
+
+El producto técnico final de cada unidad (Fase 3, 10\% de la nota) se presenta formalmente como un **artículo científico / informe técnico en \LaTeX{}** bajo normas APA 7ma edición. La investigación es acumulativa y se estructura obligatoriamente en tres partes complementarias:
+
+\begin{guidelinebox}[title=Estructura Acumulativa del Informe por Unidad]
+\begin{itemize}[leftmargin=*,itemsep=3pt]
+  \item \textbf{Unidad 1 — Informe de Formulación del Proyecto (Parte 1):}
+  \begin{enumerate}[label=\alph*),itemsep=1.5pt]
+    \item \textbf{Título formal del proyecto:} Contextualizado en el cantón Loja y su zona geográfica (Norte, Sur o Cantón Completo).
+    \item \textbf{Planteamiento del problema ambiental:} Descripción de la problemática biofísica o territorial en el territorio asignado.
+    \item \textbf{Justificación ambiental:} Relevancia ecológica, social o de gestión territorial de cuantificar el fenómeno.
+    \item \textbf{Pregunta de investigación formal:} Planteada rigurosamente en clave de Cálculo Integral.
+    \item \textbf{Hipótesis de investigación:} Conjetura fundamentada sobre el comportamiento acumulado o la tasa de variación.
+    \item \textbf{Objetivos:} Un Objetivo General y al menos tres Objetivos Específicos medibles.
+    \item \textbf{Marco de variables del bloque temático:} Tabla formal con magnitudes, símbolos algebraicos, dimensiones físicas, unidades del Sistema Internacional y criterios de calidad de los sensores.
+    \item \textbf{Formulación matemática analítica inicial:} Modelo funcional preliminar continuo $f(x)$ o $r(t)$ y planteamiento de la integral definida a evaluar.
+  \end{enumerate}
+  
+  \item \textbf{Unidad 2 — Informe de Metodología del Proyecto (Parte 2):}
+  \begin{enumerate}[label=\alph*),itemsep=1.5pt]
+    \item \textbf{Actualización de la Formulación:} Incorporación de la retroalimentación docente recibida en la Unidad 1.
+    \item \textbf{Diseño metodológico y flujo computacional:} Diagrama de flujo y descripción del preprocesamiento y auditoría de datos.
+    \item \textbf{Ajuste analítico de funciones continuas:} Justificación del modelo continuo ajustado a las observaciones discretas de las celdas de 500 m.
+    \item \textbf{Deducción matemática analítica paso a paso:} Desarrollo formal de las técnicas de integración estudiadas (sustitución, integración por partes, sustitución trigonométrica, fracciones parciales, integrales dobles sobre la cuadrícula territorial).
+    \item \textbf{Cálculo manual de control:} Resolución analítica explícita y completa de una celda o periodo específico, demostrando coincidencia matemática exacta con la salida generada por el script numérico.
+    \item \textbf{Código reproducible y modular:} Scripts documentados en Python o R con funciones testeables.
+  \end{enumerate}
+
+  \item \textbf{Unidad 3 — Informe Final Consolidado: Resultados y Conclusiones (Parte 3 - Cierre):}
+  \begin{enumerate}[label=\alph*),itemsep=1.5pt]
+    \item \textbf{Consolidación integral acumulativa:} Documento final completo que articula armónicamente la Formulación (U1) y la Metodología (U2).
+    \item \textbf{Cálculo analítico de magnitudes físicas reales:} Cuantificación final de volúmenes de agua precipitada en cuencas, empuje y presión hidrostática sobre laderas, balances de biomasa o energía liberada por fuego.
+    \item \textbf{Tablas y figuras de resultados:} Tablas numéricas estandarizadas con \texttt{booktabs}, gráficos de perfiles e integrales, y mapas espaciales temáticos.
+    \item \textbf{Análisis de sensibilidad paramétrica:} Evaluación de la estabilidad del modelo ante cambios en umbrales o constantes.
+    \item \textbf{Discusión y Contraste Territorial Comparativo Obligatorio (Norte vs. Sur):} Confrontación cuantitativa y analítica entre las zonas para parejas de equipos (Equipos 1--2, 3--4, 5--6) o balance cantonal integrado (Equipo 7), explicando físicamente las diferencias geográficas observadas.
+    \item \textbf{Conclusiones ambientales y recomendaciones:} Conclusiones derivadas estrictamente del cálculo integral y propuestas concretas para la gestión territorial y ambiental del cantón Loja.
+  \end{enumerate}
+\end{itemize}
+\end{guidelinebox}
+
+% ============================================================
+% 5. ESTRUCTURA TECNICA DEL REPOSITORIO Y REQUISITOS
+% ============================================================
+\section{Estructura Requerida del Repositorio y Reproducibilidad}
+
+Para garantizar trazabilidad, transparencia y reproducibilidad técnica, cada equipo gestionará su proyecto en un repositorio de GitHub bajo la siguiente jerarquía de archivos:
+
+\begin{examplebox}[title=Estructura Estándar de Carpetas por Equipo]
+\begin{verbatim}
+equipo_XX_tema_zona/
++-- README.md                      # Nombres, tema, zona territorial y ejecucion
++-- datos/                         # Vinculo al dataset oficial (NO modificar CSV)
+|   +-- README.md                  # Enlace oficial y huella digital SHA-256
++-- src/                           # Codigo reproducible en Python o R
+|   +-- 01_carga_exploracion.py    # Auditoria de calidad, dimensiones y nulos
+|   +-- 02_modelo_matematico.py    # Funciones continuas, derivadas e integrales
+|   +-- 03_graficos_mapas.py       # Generacion automatizada de figuras y mapas
++-- informe/                       # Fuente y entregable formal en LaTeX
+|   +-- informe_unidad_1.tex       # Codigo fuente LaTeX (normas APA 7ma ed.)
+|   +-- informe_unidad_1.pdf       # Documento final compilado en PDF
+|   +-- figuras/                   # Graficos de alta resolucion (PDF o PNG)
+|   +-- referencias.bib            # Bibliografia formal en formato BibTeX
++-- resultados/                    # Salidas numericas generadas por el script
+    +-- tablas/                    # Tablas de resumen en CSV o Markdown
+    +-- figuras/                   # Perfiles, integrales y balances territoriales
+\end{verbatim}
+\end{examplebox}
+
+\subsection{Requisitos Obligatorios de Reproducibilidad}
+\begin{enumerate}[leftmargin=*,itemsep=1.5pt]
+  \item \textbf{Ejecución en un solo paso y rutas relativas:} El código debe poder ejecutarse directamente desde la raíz del proyecto sin requerir rutas absolutas locales del computador del estudiante.
+  \item \textbf{Cálculo manual de verificación:} En el informe formal (Fase 3), se debe presentar el desarrollo matemático manual completo para una celda o periodo específico, demostrando que coincide de forma exacta con la salida computacional del script.
+  \item \textbf{Formato exclusivo en \LaTeX{}:} Todo informe formal debe ser redactado y compilado en \LaTeX{}, utilizando formato formal de artículo, tipografía matemática adecuada, tablas en \texttt{booktabs} y bibliografía en BibTeX. No se recibirán trabajos en procesadores ofimáticos tradicionales.
+\end{enumerate}
+
+% ============================================================
+% 6. RUBRICAS DE EVALUACION INSTITUCIONAL
+% ============================================================
+\section{Rúbricas Detalladas de Calificación por Fase}
+
+La calificación de cada fase se regirá por los siguientes criterios analíticos objetivos:
+
+\subsection{Rúbrica de la Fase 1: Formulación y Delimitación (3\% / 0,30 pts)}
+\begin{tabularx}{\textwidth}{L{2.8cm} C{2.0cm} Y}
+\toprule
+\textbf{Criterio} & \textbf{Puntaje} & \textbf{Descripción del Desempeño} \\
+\midrule
+Delimitación territorial & 0,10 pts & Identifica con exactitud la zona asignada (Norte, Sur o Completo), verificando el cumplimiento de la regla espacial sin incorporar celdas ajenas. \\
+Pregunta y objetivo & 0,10 pts & Formula una pregunta y un objetivo general cuya resolución demande obligatoriamente la aplicación del cálculo integral. \\
+Definición de variables & 0,10 pts & Describe con precisión física las variables del bloque temático, especificando sus magnitudes, símbolos matemáticos y unidades del Sistema Internacional. \\
+\bottomrule
+\end{tabularx}
+
+\vspace{0.15cm}
+
+\subsection{Rúbrica de la Fase 2: Avance Técnico y Exploración (4\% / 0,40 pts)}
+\begin{tabularx}{\textwidth}{L{2.8cm} C{2.0cm} Y}
+\toprule
+\textbf{Criterio} & \textbf{Puntaje} & \textbf{Descripción del Desempeño} \\
+\midrule
+Auditoría de calidad & 0,15 pts & Verifica la integridad del CSV, identificando valores faltantes, registros inválidos y variables de calidad del sensor (Sentinel, CHIRPS o VIIRS). \\
+Planteamiento analítico & 0,15 pts & Propone la función matemática que modela el fenómeno y plantea la integral correspondiente justificando sus límites de integración. \\
+Código preliminar & 0,10 pts & Presenta un script ordenado que carga los datos, calcula estadísticas básicas y genera la primera visualización exploratoria. \\
+\bottomrule
+\end{tabularx}
+
+\vspace{0.15cm}
+
+\subsection{Rúbrica de la Fase 3: Producto Técnico en \LaTeX{} (10\% / 1,00 pt)}
+\begin{tabularx}{\textwidth}{L{2.8cm} C{2.0cm} Y}
+\toprule
+\textbf{Criterio} & \textbf{Puntaje} & \textbf{Descripción del Desempeño} \\
+\midrule
+Rigor matemático & 0,35 pts & Deducción formal de teoremas y métodos de integración aplicados. Resolución analítica limpia y cálculo manual de verificación idéntico al resultado del código. \\
+Análisis de resultados & 0,25 pts & Interpretación física de las integrales obtenidas en el contexto ambiental del cantón Loja. Análisis de sensibilidad ante variaciones de parámetros o umbrales. \\
+Reproducibilidad técnica & 0,20 pts & Código en Python/R completamente modular, documentado y reproducible que regenera todas las tablas y figuras del documento sin intervención manual. \\
+Estructura y normas APA & 0,20 pts & Redacción científica en \LaTeX{}, citas bibliográficas pertinentes en formato APA 7ma edición, figuras vectoriales legibles y tablas formateadas con \texttt{booktabs}. \\
+\bottomrule
+\end{tabularx}
+
+\vspace{0.15cm}
+
+\subsection{Rúbrica de la Fase 4: Defensa Oral Individual (8\% / 0,80 pts)}
+\begin{tabularx}{\textwidth}{L{2.8cm} C{2.0cm} Y}
+\toprule
+\textbf{Criterio} & \textbf{Puntaje} & \textbf{Descripción del Desempeño} \\
+\midrule
+Dominio conceptual & 0,30 pts & Justifica sin vacilación los conceptos matemáticos del cálculo integral utilizados (Teorema Fundamental, métodos de integración, interpretación de áreas o volúmenes). \\
+Prueba en vivo & 0,35 pts & Resuelve satisfactoriamente en vivo una modificación solicitada por el docente sobre el modelo matemático, los límites de la integral o los parámetros del script. \\
+Articulación ambiental & 0,15 pts & Explica con criterio de ingeniería ambiental el impacto real de los resultados obtenidos para la gestión y conservación del territorio de Loja. \\
+\bottomrule
+\end{tabularx}
+
+\begin{alertbox}[title=Principio de Evaluación Individual en la Fase 4]
+La calificación de la Fase 4 es \textbf{estrictamente individual}. La nota de un estudiante no depende de la de sus compañeros de equipo. Un estudiante que demuestre vacilación conceptual grave o no logre resolver la prueba de modificación en vivo obtendrá una calificación de cero ($0{,}00$) en dicha fase, independientemente de la calidad del informe grupal presentado.
+\end{alertbox}
+
+\vspace{0.15cm}
+
+% ============================================================
+% 7. GUIA DE COMANDOS GIT Y ACCESO A DATOS
+% ============================================================
+\section{Instrucciones Técnicas para Descarga y Clonación}
+
+Para acceder a los conjuntos de datos autorizados, cada equipo debe ejecutar los siguientes comandos en su terminal de trabajo:
+
+\begin{examplebox}[title=Comandos de Clonación del Repositorio de Datos]
+\begin{verbatim}
+# 1. Clonar el repositorio publico oficial de datos
+git clone https://github.com/cguillermo79/Informacion_matematica.git
+
+# 2. Ingresar a la carpeta de bases del proyecto integrador
+cd Informacion_matematica/bases_datos_proyecto_integrador
+
+# 3. Listar las carpetas y verificar el manifiesto oficial
+ls -lh
+\end{verbatim}
+\end{examplebox}
+
+\noindent Los archivos CSV oficiales de cada equipo están organizados en las carpetas con la nomenclatura \texttt{equipo\_01\_...} hasta \texttt{equipo\_07\_...}. Antes de iniciar el análisis, cada equipo debe verificar que la huella digital SHA-256 de su archivo coincida de manera exacta con la reportada en el archivo \texttt{MANIFIESTO\_BASES.csv}.
+
+\vspace{0.35cm}
+\begin{center}
+  \rule{0.6\textwidth}{0.6pt}\\[0.15cm]
+  {\footnotesize\textbf{Ing. Guillermo Chuncho}\newline
+  Docente de Matemática II $\vert$ Carrera de Ingeniería Ambiental\newline
+  Universidad Nacional de Loja}
+\end{center}
+
+\end{document}
