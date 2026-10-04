@@ -63,10 +63,10 @@ Abra su terminal favorita:
 ---
 
 ### Paso 1: Configurar su identidad en Git (Solo si es la primera vez)
-Configure su nombre completo y correo institucional de la UNL:
+Configure su nombre completo y su correo electrónico personal (el mismo asociado a su cuenta de GitHub):
 ```bash
 git config --global user.name "Nombres y Apellidos del Estudiante"
-git config --global user.email "correo.estudiante@unl.edu.ec"
+git config --global user.email "correo.personal@gmail.com"
 ```
 Verifique la configuración con:
 ```bash
