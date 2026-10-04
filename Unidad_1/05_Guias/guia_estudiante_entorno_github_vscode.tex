@@ -1,0 +1,485 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-nodecimaldot,es-noquoting]{babel}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\geometry{top=1.8cm,bottom=1.8cm,left=1.8cm,right=1.8cm}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{ragged2e}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{listings}
+
+% Paleta de colores institucional
+\definecolor{unlbluelight}{RGB}{0,86,145}
+\definecolor{azulOscuro}{RGB}{12,43,92}
+\definecolor{verdeBosque}{RGB}{27,107,74}
+\definecolor{rojoAlerta}{RGB}{179,38,30}
+\definecolor{doradoUNL}{RGB}{197,143,39}
+\definecolor{grisFondo}{RGB}{247,249,252}
+\definecolor{grisBorde}{RGB}{209,217,230}
+\definecolor{grisTerminal}{RGB}{30,30,30}
+
+% Configuracion de hyperref
+\hypersetup{
+    colorlinks=true,
+    linkcolor=azulOscuro,
+    filecolor=magenta,      
+    urlcolor=unlbluelight,
+    citecolor=verdeBosque
+}
+
+% Configuracion de listings para terminal y codigo
+\lstset{
+  basicstyle=\footnotesize\ttfamily\color{black},
+  backgroundcolor=\color{grisFondo},
+  frame=single,
+  rulecolor=\color{grisBorde},
+  breaklines=true,
+  breakatwhitespace=true,
+  showstringspaces=false,
+  tabsize=2,
+  numbers=none,
+  xleftmargin=6pt,
+  xrightmargin=6pt,
+  aboveskip=4pt,
+  belowskip=4pt
+}
+
+% Columnas tabulares
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+
+% Cabeceras y pies de pagina
+\setlength{\headheight}{22pt}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.8pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{unlbluelight}\leaders\hrule height \headrulewidth\hfill}}
+\fancyhead[L]{\footnotesize\textbf{\color{unlbluelight}UNIVERSIDAD NACIONAL DE LOJA} $\vert$ Ing. Ambiental}
+\fancyhead[R]{\footnotesize\textbf{Matemática II} $\vert$ Guía de Instalación y GitHub}
+\fancyfoot[L]{\footnotesize Ciclo Sep 2026 -- Feb 2027}
+\fancyfoot[C]{\footnotesize Guía Práctica de Terminal, Git, VS Code y Entorno Virtual}
+\fancyfoot[R]{\footnotesize Pág. \thepage}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \fancyfoot[L]{\footnotesize Ciclo Sep 2026 -- Feb 2027}%
+  \fancyfoot[C]{\footnotesize Guía Práctica de Terminal, Git, VS Code y Entorno Virtual}%
+  \fancyfoot[R]{\footnotesize Pág. \thepage}%
+}
+
+% Formato de titulos
+\titleformat{\section}{\large\bfseries\color{azulOscuro}}{\thesection.}{0.5em}{}[\titlerule]
+\titleformat{\subsection}{\normalsize\bfseries\color{unlbluelight}}{\thesubsection.}{0.4em}{}
+\titleformat{\subsubsection}{\small\bfseries\color{verdeBosque}}{\thesubsubsection.}{0.3em}{}
+\titlespacing*{\section}{0pt}{9pt}{4pt}
+\titlespacing*{\subsection}{0pt}{7pt}{3pt}
+\titlespacing*{\subsubsection}{0pt}{5pt}{2pt}
+
+% Cajas de diseno
+\newtcolorbox{bannerbox}[1][]{
+  colback=azulOscuro, colframe=azulOscuro, arc=4pt, boxrule=1pt,
+  fonttitle=\bfseries\color{white}, colbacktitle=azulOscuro,
+  top=6pt, bottom=6pt, left=8pt, right=8pt, breakable, #1
+}
+
+\newtcolorbox{conceptbox}[1][]{
+  colback=grisFondo, colframe=unlbluelight, arc=3pt, boxrule=1pt,
+  fonttitle=\bfseries\color{white}, colbacktitle=unlbluelight,
+  top=5pt, bottom=5pt, left=8pt, right=8pt, breakable, #1
+}
+
+\newtcolorbox{stepbox}[2][]{
+  colback=white, colframe=unlbluelight, arc=3pt, boxrule=1pt,
+  title=\textbf{#2}, fonttitle=\bfseries\color{white}, colbacktitle=unlbluelight,
+  top=5pt, bottom=5pt, left=8pt, right=8pt, breakable, #1
+}
+
+\newtcolorbox{alertbox}[1][]{
+  colback=red!3!white, colframe=rojoAlerta, arc=3pt, boxrule=1pt,
+  fonttitle=\bfseries\color{white}, colbacktitle=rojoAlerta,
+  top=5pt, bottom=5pt, left=8pt, right=8pt, breakable, #1
+}
+
+\newtcolorbox{terminalbox}[2][]{
+  colback=grisTerminal, colframe=black, arc=3pt, boxrule=1pt,
+  title={\color{white}\footnotesize\textbf{Terminal / Consola: #2}},
+  fonttitle=\bfseries\color{white}, colbacktitle=black,
+  top=4pt, bottom=4pt, left=6pt, right=6pt, breakable, #1
+}
+
+\begin{document}
+\thispagestyle{plain}
+
+% ============================================================
+% ENCABEZADO INSTITUCIONAL
+% ============================================================
+\begin{center}
+  {\Large\textbf{\color{azulOscuro}UNIVERSIDAD NACIONAL DE LOJA}}\vspace{0.10cm}\\
+  {\large\textbf{\color{unlbluelight}FACULTAD AGROPECUARIA Y DE RECURSOS NATURALES RENOVABLES}}\vspace{0.06cm}\\
+  {\normalsize\textbf{CARRERA DE INGENIERÍA AMBIENTAL}}\vspace{0.10cm}\\
+  {\small Período Académico: Septiembre 2026 -- Febrero 2027 $\quad\vert\quad$ Modalidad: Presencial}
+\end{center}
+
+\vspace{0.10cm}
+
+\begin{bannerbox}
+  \centering\color{white}
+  {\Large\bfseries GUÍA PASO A PASO: REPOSITORIO GITHUB, VISUAL STUDIO CODE,}\\[0.10cm]
+  {\Large\bfseries ENTORNO VIRTUAL PYTHON (venv) Y BASES DEL PROYECTO INTEGRADOR}\\[0.10cm]
+  {\normalsize\textbf{MATEMÁTICA II: CÁLCULO INTEGRAL APLICADO A LA INGENIERÍA AMBIENTAL}}\\[0.06cm]
+  {\footnotesize\textit{Docente: Dr. Guillermo Chuncho $\quad\vert\quad$ Repositorio: https://github.com/cguillermo79/Informacion\_matematica}}
+\end{bannerbox}
+
+\vspace{0.25cm}
+
+% ============================================================
+% 1. PROPOSITO DE LA GUIA
+% ============================================================
+\section{Propósito y Objetivos de la Guía}
+
+Esta guía técnica tiene como finalidad orientar de manera detallada, secuencial y reproducible a los estudiantes de la Carrera de Ingeniería Ambiental en la configuración integral de su espacio de trabajo en sus computadoras personales. 
+
+\begin{conceptbox}[title=Objetivos de Aprendizaje Operativo]
+Al finalizar esta guía, cada estudiante y equipo de trabajo estará en capacidad de:
+\begin{enumerate}[leftmargin=*,itemsep=1.5pt]
+  \item Instalar y verificar las herramientas base de desarrollo científico: Git, Python 3 y Visual Studio Code.
+  \item Clonar el repositorio oficial de GitHub del curso y mantenerlo actualizado localmente.
+  \item Crear, configurar y activar un \textbf{entorno virtual aislado de Python (\texttt{venv})} para garantizar que los scripts y librerías funcionen sin colisiones de versiones.
+  \item Vincular correctamente el intérprete virtual en Visual Studio Code.
+  \item Acceder a las bases de datos geoespaciales y climáticas asignadas a su grupo ($4.000$ celdas para zonas Norte/Sur y $7.997$ celdas para el Cantón Loja).
+  \item Conocer la estructura de carpetas donde desarrollarán y depositarán los entregables de la Unidad 1, Unidad 2 y Unidad 3, y el flujo de comandos en Git para sincronizar su trabajo.
+\end{enumerate}
+\end{conceptbox}
+
+% ============================================================
+% 2. REQUISITOS PREVIOS E INSTALACION DE HERRAMIENTAS BASE
+% ============================================================
+\section{Requisitos Previos: Instalación del Software Base}
+
+Antes de ejecutar los comandos en la terminal, asegúrese de tener instalado en su computadora el siguiente software gratuito y de código abierto:
+
+\begin{enumerate}[leftmargin=*,itemsep=4pt]
+  \item \textbf{Git (Sistema de Control de Versiones):}
+  \begin{itemize}
+    \item Descargar desde el sitio oficial: \url{https://git-scm.com/downloads}.
+    \item Durante la instalación en Windows, deje las opciones por defecto recomendadas (asegúrese de permitir Git desde la línea de comandos de Windows).
+  \end{itemize}
+
+  \item \textbf{Python 3 (Versión 3.10, 3.11 o 3.12 recomendada):}
+  \begin{itemize}
+    \item Descargar desde: \url{https://www.python.org/downloads/}.
+    \item \textbf{\color{rojoAlerta}¡PASO CRÍTICO EN WINDOWS!:} Al iniciar el instalador, marque obligatoriamente la casilla inferior que dice: \textbf{\textit{''Add python.exe to PATH''}} antes de hacer clic en \textit{Install Now}. Si omite este paso, el comando \texttt{python} no será reconocido en la terminal.
+  \end{itemize}
+
+  \item \textbf{Visual Studio Code (VS Code):}
+  \begin{itemize}
+    \item Descargar desde: \url{https://code.visualstudio.com/Download}.
+    \item Extensiones recomendadas dentro de VS Code (instalar desde la pestaña de Extensiones \texttt{Ctrl+Shift+X}):
+    \begin{itemize}
+      \item \textbf{Python} (desarrollada por Microsoft).
+      \item \textbf{Jupyter} (para cuadernos interactivos \texttt{.ipynb}).
+      \item \textbf{GitLens} (para trazabilidad y control de ramas en Git).
+    \end{itemize}
+  \end{itemize}
+\end{enumerate}
+
+% ============================================================
+% 3. PASO A PASO EN LA TERMINAL: DE GITHUB A SU COMPUTADORA
+% ============================================================
+\section{Paso a Paso en la Terminal: Clonación y Apertura en VS Code}
+
+Abra la terminal de su sistema operativo: en Windows puede usar \textbf{PowerShell} o la \textbf{Terminal de Windows}; en macOS o Linux utilice la aplicación \textbf{Terminal}.
+
+\begin{stepbox}{Paso 1: Configurar su identidad en Git (Solo si es la primera vez)}
+Abra su terminal y configure su nombre y correo institucional de la UNL para que sus contribuciones queden registradas adecuadamente:
+\begin{lstlisting}[language=bash]
+git config --global user.name "Nombres y Apellidos del Estudiante"
+git config --global user.email "correo.estudiante@unl.edu.ec"
+\end{lstlisting}
+Para verificar que quedó bien configurado, ejecute:
+\begin{lstlisting}[language=bash]
+git config --list
+\end{lstlisting}
+\end{stepbox}
+
+\begin{stepbox}{Paso 2: Crear una carpeta de trabajo y ubicarse en ella}
+Se recomienda tener una carpeta ordenada en su disco local (por ejemplo en \texttt{Documentos}):
+\begin{lstlisting}[language=bash]
+# En Windows PowerShell o CMD:
+cd $HOME\Documents
+mkdir Matematica_UNL
+cd Matematica_UNL
+
+# En Linux o macOS:
+cd ~/Documents
+mkdir Matematica_UNL
+cd Matematica_UNL
+\end{lstlisting}
+\end{stepbox}
+
+\begin{stepbox}{Paso 3: Clonar el repositorio oficial del curso desde GitHub}
+Ejecute el comando \texttt{git clone} utilizando la dirección URL pública del repositorio del curso:
+\begin{lstlisting}[language=bash]
+git clone https://github.com/cguillermo79/Informacion_matematica.git
+\end{lstlisting}
+Una vez que finalice la descarga de todos los archivos y bases de datos, ingrese a la carpeta del proyecto:
+\begin{lstlisting}[language=bash]
+cd Informacion_matematica
+\end{lstlisting}
+\end{stepbox}
+
+\begin{stepbox}{Paso 4: Abrir el proyecto en Visual Studio Code}
+Desde la misma terminal, dentro de la carpeta \texttt{Informacion\_matematica}, ejecute:
+\begin{lstlisting}[language=bash]
+code .
+\end{lstlisting}
+\textit{Nota:} El punto (\texttt{.}) indica que se debe abrir la carpeta actual. Si el comando \texttt{code} no abre VS Code, abra manualmente Visual Studio Code, vaya al menú superior: \textbf{File $\rightarrow$ Open Folder...} y seleccione la carpeta \texttt{Informacion\_matematica}.
+\end{stepbox}
+
+% ============================================================
+% 4. CREACION Y ACTIVACION DEL ENTORNO VIRTUAL PYTHON (venv)
+% ============================================================
+\section{Creación y Activación del Entorno Virtual de Python (\texttt{venv})}
+
+\begin{conceptbox}[title=¿Por qué es indispensable crear un entorno virtual?]
+Un entorno virtual (\texttt{venv}) es una instalación aislada y autónoma de Python dentro del proyecto. Evita conflictos de paquetes entre diferentes asignaturas, garantiza que todas las librerías necesarias (\texttt{pandas}, \texttt{numpy}, \texttt{scipy}, \texttt{matplotlib}) tengan las versiones exactas y no modifica la configuración global de su sistema operativo.
+\end{conceptbox}
+
+Realice todos los siguientes pasos desde la \textbf{Terminal Integrada de Visual Studio Code} (puede abrirla pulsando las teclas \texttt{Ctrl + \~{}} o \texttt{Ctrl + Shift + \~{}}, o en el menú superior: \textbf{Terminal $\rightarrow$ New Terminal}):
+
+\begin{stepbox}{Paso 5: Crear el entorno virtual en la raíz del proyecto}
+Estando en la terminal dentro de \texttt{Informacion\_matematica}, ejecute:
+\begin{lstlisting}[language=bash]
+# En Windows (PowerShell o CMD):
+python -m venv .venv
+
+# En macOS o Linux (o si tiene multiples versiones instaladas):
+python3 -m venv .venv
+\end{lstlisting}
+Esto creará una subcarpeta oculta llamada \texttt{.venv} en su proyecto con el intérprete de Python y su propio gestor de paquetes \texttt{pip}.
+\end{stepbox}
+
+\begin{alertbox}[title=Atención en Windows PowerShell: Error de Políticas de Ejecución]
+Si al intentar activar el entorno virtual en Windows PowerShell le aparece el error:\\
+\textit{\textcolor{rojoAlerta}{''File ... Activate.ps1 cannot be loaded because running scripts is disabled on this system''}},\\
+debe habilitar la ejecución de scripts para su usuario ejecutando \textbf{una sola vez} este comando en la terminal:
+\begin{lstlisting}[language=bash]
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+\end{lstlisting}
+Presione \textbf{Y} (Sí) cuando el sistema le pida confirmación.
+\end{alertbox}
+
+\begin{stepbox}{Paso 6: Activar el entorno virtual}
+Ejecute el comando correspondiente a su terminal y sistema operativo:
+\begin{lstlisting}[language=bash]
+# En Windows (PowerShell):
+.\.venv\Scripts\Activate.ps1
+
+# En Windows (CMD - Simbolo del sistema):
+.\.venv\Scripts\activate.bat
+
+# En macOS y Linux (Bash o Zsh):
+source .venv/bin/activate
+\end{lstlisting}
+\textbf{¿Cómo saber si el entorno virtual está activo?} \\
+En la terminal observará que al inicio de la línea de comandos aparece el prefijo \texttt{(.venv)} entre paréntesis, por ejemplo:
+\begin{lstlisting}[language=bash]
+(.venv) PS C:\Users\Estudiante\Documents\Matematica_UNL\Informacion_matematica>
+\end{lstlisting}
+\end{stepbox}
+
+\begin{stepbox}{Paso 7: Seleccionar el Intérprete de Python dentro de Visual Studio Code}
+Para que VS Code y los cuadernos de Jupyter reconozcan el entorno virtual:
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+  \item Presione en su teclado la combinación \texttt{Ctrl + Shift + P} (o \texttt{Cmd + Shift + P} en Mac).
+  \item Escriba: \textbf{\texttt{Python: Select Interpreter}} y presione Enter.
+  \item En la lista desplegable, elija la opción recomendada que contiene \texttt{(.venv): .venv\textbackslash Scripts\textbackslash python.exe} (o \texttt{.venv/bin/python}).
+\end{enumerate}
+En la esquina inferior derecha de la ventana de VS Code verá reflejado \texttt{3.1x.x ('.venv': venv)}.
+\end{stepbox}
+
+\begin{stepbox}{Paso 8: Actualizar pip e instalar las librerías científicas requeridas}
+Con el entorno virtual activo \texttt{(.venv)}, actualice el gestor \texttt{pip} e instale todas las librerías científicas del curso ejecutando:
+\begin{lstlisting}[language=bash]
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+\end{lstlisting}
+\textit{Si no tuviera el archivo \texttt{requirements.txt}, puede instalar las librerías directamente con:}
+\begin{lstlisting}[language=bash]
+pip install numpy scipy pandas matplotlib seaborn jupyter pyarrow fastparquet openpyxl
+\end{lstlisting}
+\end{stepbox}
+
+% ============================================================
+% 5. BASES DE DATOS DEL PROYECTO INTEGRADOR POR GRUPO
+% ============================================================
+\section{Acceso y Verificación de las Bases de Datos por Equipo}
+
+Las bases de datos oficiales ya se encuentran descargadas en la carpeta \texttt{bases\_datos\_proyecto\_integrador/}. Cada equipo debe identificar la subcarpeta asignada a su temática y zona de estudio:
+
+\begin{table}[h!]
+\centering
+\scriptsize
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{C{1.2cm} L{3.5cm} C{2.0cm} Y L{4.5cm}}
+\toprule
+\textbf{Equipo} & \textbf{Bloque Temático Asignado} & \textbf{Zona} & \textbf{Carpeta Asignada} & \textbf{Dimensión de la Base} \\
+\midrule
+\textbf{Equipo 1} & Relieve y Accesibilidad & Norte & \texttt{equipo\_01\_relieve\_}\newline\texttt{zona\_norte/} & 4.001 celdas, 288.072 reg, 66 col \\
+\textbf{Equipo 2} & Relieve y Accesibilidad & Sur & \texttt{equipo\_02\_relieve\_}\newline\texttt{zona\_sur/} & 3.996 celdas, 287.712 reg, 66 col \\
+\textbf{Equipo 3} & Cobertura Vegetal y Suelo & Norte & \texttt{equipo\_03\_cobertura\_}\newline\texttt{zona\_norte/} & 4.001 celdas, 288.072 reg, 53 col \\
+\textbf{Equipo 4} & Cobertura Vegetal y Suelo & Sur & \texttt{equipo\_04\_cobertura\_}\newline\texttt{zona\_sur/} & 3.996 celdas, 287.712 reg, 53 col \\
+\textbf{Equipo 5} & Clima y Atmósfera & Norte & \texttt{equipo\_05\_clima\_}\newline\texttt{zona\_norte/} & 4.001 celdas, 288.072 reg, 57 col \\
+\textbf{Equipo 6} & Clima y Atmósfera & Sur & \texttt{equipo\_06\_clima\_}\newline\texttt{zona\_sur/} & 3.996 celdas, 287.712 reg, 57 col \\
+\textbf{Equipo 7} & Incendios y Severidad & Cantonal & \texttt{equipo\_07\_incendios\_}\newline\texttt{loja\_completo/} & 7.997 celdas, 575.784 reg, 41 col \\
+\bottomrule
+\end{tabularx}
+\caption{Subcarpetas autorizadas para cada equipo de trabajo en el proyecto integrador.}
+\label{tab:equipos_carpetas}
+\end{table}
+
+\begin{stepbox}{Paso 9: Script de verificación rápida en Python}
+Para verificar que el entorno virtual lee correctamente la base de datos de su equipo, cree un archivo de prueba \texttt{test\_datos.py} o abra un cuaderno de Jupyter y ejecute el siguiente código (modifique la ruta según su equipo):
+\begin{lstlisting}[language=python]
+import pandas as pd
+from pathlib import Path
+
+# Ejemplo para el Equipo 1 (Relieve Zona Norte):
+carpeta = Path("bases_datos_proyecto_integrador/equipo_01_relieve_zona_norte")
+ruta_base = carpeta / "equipo_01_relieve_zona_norte.parquet"
+
+if ruta_base.exists():
+    df = pd.read_parquet(ruta_base)
+    print("Lectura exitosa de la base de datos!")
+    print(f"Filas totales: {df.shape[0]}, Columnas: {df.shape[1]}")
+    print(f"Celdas espaciales unicas: {df['cell_id'].nunique()}")
+    print(df.head(3))
+else:
+    print(f"Error: No se encontro el archivo en {ruta_base}")
+\end{lstlisting}
+\end{stepbox}
+
+% ============================================================
+% 6. ESTRUCTURA DE CARPETAS PARA ENTREGABLES Y SUBIDAS
+% ============================================================
+\section{Estructura de Carpetas de Entregables por Unidad}
+
+El repositorio cuenta con una estructura jerárquica estandarizada para las tres unidades del ciclo académico. Cada equipo debe colocar sus trabajos exclusivamente en las carpetas correspondientes:
+
+\begin{lstlisting}[language=bash]
+Informacion_matematica/
+|-- bases_datos_proyecto_integrador/     <- Bases oficiales (solo lectura)
+|-- Unidad_1/
+|   |-- 01_formulacion_3pct/             <- Fase 1: Delimitacion, pregunta, hipotesis y variables
+|   |-- 02_avance_4pct/                  <- Fase 2: Scripts, cuadernos exploratorios y tablas
+|   |-- 03_producto_tecnico_10pct/       <- Fase 3: Informe formal escrito en LaTeX y PDF
+|   |-- 04_defensa_individual_8pct/      <- Fase 4: Presentacion y diapositivas de sustentacion
+|   `-- 05_Guias/                        <- Guias oficiales de catedra (.pdf y .tex)
+|-- Unidad_2/
+|   |-- 01_formulacion_3pct/             <- Fase 1 U2: Modelos continuos no lineales
+|   |-- 02_avance_4pct/                  <- Fase 2 U2: Tecnicas de integracion computacionales
+|   |-- 03_producto_tecnico_10pct/       <- Fase 3 U2: Informe de Metodologia en LaTeX y PDF
+|   |-- 04_defensa_individual_8pct/      <- Fase 4 U2: Material de sustentacion
+|   `-- 05_Guias/
+`-- Unidad_3/
+    |-- 01_formulacion_3pct/             <- Fase 1 U3: Modelacion fisica y balances
+    |-- 02_avance_4pct/                  <- Fase 2 U3: Integrales dobles y serie temporal
+    |-- 03_producto_tecnico_10pct/       <- Fase 3 U3: Informe Final Consolidado (LaTeX y PDF)
+    |-- 04_defensa_individual_8pct/      <- Fase 4 U3: Defensa final individual
+    `-- 05_Guias/
+\end{lstlisting}
+
+% ============================================================
+% 7. FLUJO DE TRABAJO EN GIT: ACTUALIZAR Y SUBIR TRABAJOS
+% ============================================================
+\section{Flujo de Trabajo con Git: Actualizar y Subir Entregables}
+
+Para sincronizar el trabajo de su equipo y mantener al día las guías y materiales compartidos por el docente:
+
+\begin{stepbox}{1. Descargar actualizaciones del docente (Antes de empezar a trabajar)}
+Cada vez que el docente publique nuevas guías o avisos en el repositorio oficial, ejecute en su terminal:
+\begin{lstlisting}[language=bash]
+git pull origin main
+\end{lstlisting}
+Esto incorporará los nuevos archivos a su computador sin alterar su código local.
+\end{stepbox}
+
+\begin{stepbox}{2. Registrar y guardar los avances de su equipo}
+Una vez que hayan elaborado su documento de formulación, script o informe en la carpeta correspondiente de su unidad:
+\begin{lstlisting}[language=bash]
+# Verifique que archivos modifico o creo:
+git status
+
+# Agregue los archivos de su entrega (ejemplo para Unidad 1):
+git add Unidad_1/01_formulacion_3pct/
+
+# Guarde el commit con un mensaje claro y formal:
+git commit -m "Equipo 01: Entrega Fase 1 Formulacion del Proyecto Unidad 1"
+\end{lstlisting}
+\end{stepbox}
+
+\begin{stepbox}{3. Subir sus cambios al repositorio remoto}
+Para enviar sus cambios a GitHub (si trabaja en una rama de equipo o en su fork):
+\begin{lstlisting}[language=bash]
+git push origin main
+\end{lstlisting}
+\end{stepbox}
+
+\begin{alertbox}[title=Buenas Prácticas Obligatorias: Archivo .gitignore]
+Nunca suba a Git archivos pesados autogenerados ni entornos virtuales. El repositorio cuenta con un archivo \texttt{.gitignore} configurado para omitir automáticamente:
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+  \item La carpeta del entorno virtual: \texttt{.venv/}
+  \item Cachés de Python: \texttt{\_\_pycache\_\_/}, \texttt{*.pyc}
+  \item Puntos de control de Jupyter: \texttt{.ipynb\_checkpoints/}
+  \item Archivos temporales de compilación de LaTeX: \texttt{*.aux}, \texttt{*.log}, \texttt{*.out}, \texttt{*.toc}, \texttt{*.synctex.gz} (solo se suben el \texttt{.tex} y el \texttt{.pdf}).
+\end{itemize}
+\end{alertbox}
+
+% ============================================================
+% 8. RESUMEN DE COMANDOS MAS FRECUENTES (CHEATSHEET)
+% ============================================================
+\section{Resumen Rápido de Comandos en Terminal (Cheatsheet)}
+
+\begin{table}[h!]
+\centering
+\small
+\renewcommand{\arraystretch}{1.20}
+\begin{tabularx}{\textwidth}{L{4.2cm} L{5.5cm} Y}
+\toprule
+\textbf{Acción Requerida} & \textbf{Comando Windows (PowerShell)} & \textbf{Comando Linux / macOS} \\
+\midrule
+Clonar repositorio & \texttt{git clone <URL>} & \texttt{git clone <URL>} \\
+Abrir carpeta en VS Code & \texttt{code .} & \texttt{code .} \\
+Crear entorno virtual & \texttt{python -m venv .venv} & \texttt{python3 -m venv .venv} \\
+Habilitar scripts (solo 1 vez) & \texttt{Set-ExecutionPolicy RemoteSigned -Scope CurrentUser} & No aplica \\
+Activar entorno virtual & \texttt{.\textbackslash .venv\textbackslash Scripts\textbackslash Activate.ps1} & \texttt{source .venv/bin/activate} \\
+Desactivar entorno virtual & \texttt{deactivate} & \texttt{deactivate} \\
+Instalar librerías del curso & \texttt{pip install -r requirements.txt} & \texttt{pip install -r requirements.txt} \\
+Actualizar cambios remotos & \texttt{git pull origin main} & \texttt{git pull origin main} \\
+Ver estado de cambios & \texttt{git status} & \texttt{git status} \\
+Preparar archivos & \texttt{git add <carpeta o archivo>} & \texttt{git add <carpeta o archivo>} \\
+Confirmar entrega local & \texttt{git commit -m "Mensaje"} & \texttt{git commit -m "Mensaje"} \\
+Subir cambios al remoto & \texttt{git push origin main} & \texttt{git push origin main} \\
+\bottomrule
+\end{tabularx}
+\caption{Referencia rápida de comandos de terminal para el proyecto integrador.}
+\label{tab:cheatsheet}
+\end{table}
+
+\vfill
+\begin{center}
+  \footnotesize\textbf{Universidad Nacional de Loja $\vert$ Facultad Agropecuaria y de Recursos Naturales Renovables}\\
+  \footnotesize Carrera de Ingeniería Ambiental $\vert$ Matemática II (Cálculo Integral) $\vert$ Ciclo Sep 2026 -- Feb 2027
+\end{center}
+
+\end{document}
