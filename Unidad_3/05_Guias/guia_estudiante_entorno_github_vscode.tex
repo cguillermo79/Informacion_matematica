@@ -156,7 +156,7 @@ Al finalizar esta guía, cada estudiante y equipo de trabajo estará en capacida
   \item Clonar el repositorio oficial de GitHub del curso y mantenerlo actualizado localmente.
   \item Crear, configurar y activar un \textbf{entorno virtual aislado de Python (\texttt{venv})} para garantizar que los scripts y librerías funcionen sin colisiones de versiones.
   \item Vincular correctamente el intérprete virtual en Visual Studio Code.
-  \item Acceder a las bases de datos geoespaciales y climáticas asignadas a su grupo ($4.000$ celdas para zonas Norte/Sur y $7.997$ celdas para el Cantón Loja).
+  \item Acceder a las bases de datos geoespaciales y climáticas asignadas a su grupo (ventanas de estudio de $400$ o $100$ celdas en las zonas Norte/Sur y la serie cantonal de incendios del Cantón Loja).
   \item Conocer la estructura de carpetas donde desarrollarán y depositarán los entregables de la Unidad 1, Unidad 2 y Unidad 3, y el flujo de comandos en Git para sincronizar su trabajo.
 \end{enumerate}
 \end{conceptbox}
@@ -325,7 +325,7 @@ pip install numpy scipy pandas matplotlib seaborn jupyter pyarrow fastparquet op
 % ============================================================
 \section{Acceso y Verificación de las Bases de Datos por Equipo}
 
-Las bases de datos oficiales ya se encuentran descargadas en la carpeta \texttt{bases\_datos\_proyecto\_integrador/}. Cada equipo debe identificar la subcarpeta asignada a su temática y zona de estudio:
+Las bases de datos oficiales ya se encuentran descargadas en la carpeta \texttt{Unidad\_1/\allowbreak bases\_\allowbreak datos\_\allowbreak proyecto\_\allowbreak integrador/} (archivos CSV pequeños, de 5\,KB a 1\,MB). El significado de cada columna está en \texttt{DICCIONARIO\_\allowbreak VARIABLES.csv}. Cada equipo debe identificar la subcarpeta asignada a su temática y zona de estudio:
 
 \begin{table}[h!]
 \centering
@@ -335,13 +335,13 @@ Las bases de datos oficiales ya se encuentran descargadas en la carpeta \texttt{
 \toprule
 \textbf{Equipo} & \textbf{Bloque Temático Asignado} & \textbf{Zona} & \textbf{Carpeta Asignada} & \textbf{Dimensión de la Base} \\
 \midrule
-\textbf{Equipo 1} & Relieve y Accesibilidad & Norte & \texttt{equipo\_01\_relieve\_}\newline\texttt{zona\_norte/} & 4.001 celdas, 288.072 reg, 66 col \\
-\textbf{Equipo 2} & Relieve y Accesibilidad & Sur & \texttt{equipo\_02\_relieve\_}\newline\texttt{zona\_sur/} & 3.996 celdas, 287.712 reg, 66 col \\
-\textbf{Equipo 3} & Cobertura Vegetal y Suelo & Norte & \texttt{equipo\_03\_cobertura\_}\newline\texttt{zona\_norte/} & 4.001 celdas, 288.072 reg, 53 col \\
-\textbf{Equipo 4} & Cobertura Vegetal y Suelo & Sur & \texttt{equipo\_04\_cobertura\_}\newline\texttt{zona\_sur/} & 3.996 celdas, 287.712 reg, 53 col \\
-\textbf{Equipo 5} & Clima y Atmósfera & Norte & \texttt{equipo\_05\_clima\_}\newline\texttt{zona\_norte/} & 4.001 celdas, 288.072 reg, 57 col \\
-\textbf{Equipo 6} & Clima y Atmósfera & Sur & \texttt{equipo\_06\_clima\_}\newline\texttt{zona\_sur/} & 3.996 celdas, 287.712 reg, 57 col \\
-\textbf{Equipo 7} & Incendios y Severidad & Cantonal & \texttt{equipo\_07\_incendios\_}\newline\texttt{loja\_completo/} & 7.997 celdas, 575.784 reg, 41 col \\
+\textbf{Equipo 1} & Relieve y Accesibilidad & Norte & \texttt{equipo\_01\_relieve\_}\newline\texttt{norte/} & 400 celdas (20$\times$20), 400 reg, 17 col \\
+\textbf{Equipo 2} & Relieve y Accesibilidad & Sur & \texttt{equipo\_02\_relieve\_}\newline\texttt{sur/} & 400 celdas (20$\times$20), 400 reg, 17 col \\
+\textbf{Equipo 3} & Cobertura Vegetal y Suelo & Norte & \texttt{equipo\_03\_cobertura\_}\newline\texttt{norte/} & 100 celdas (10$\times$10) $\times$ 72 meses, 7.200 reg, 28 col \\
+\textbf{Equipo 4} & Cobertura Vegetal y Suelo & Sur & \texttt{equipo\_04\_cobertura\_}\newline\texttt{sur/} & 100 celdas (10$\times$10) $\times$ 72 meses, 7.200 reg, 28 col \\
+\textbf{Equipo 5} & Clima y Atmósfera & Norte & \texttt{equipo\_05\_clima\_}\newline\texttt{norte/} & 100 celdas (10$\times$10) $\times$ 72 meses, 7.200 reg, 22 col \\
+\textbf{Equipo 6} & Clima y Atmósfera & Sur & \texttt{equipo\_06\_clima\_}\newline\texttt{sur/} & 100 celdas (10$\times$10) $\times$ 72 meses, 7.200 reg, 22 col \\
+\textbf{Equipo 7} & Incendios y Severidad & Cantonal & \texttt{equipo\_07\_incendios\_}\newline\texttt{loja/} & Serie mensual (72 reg) y resumen por celda (7.997 reg) \\
 \bottomrule
 \end{tabularx}
 \caption{Subcarpetas autorizadas para cada equipo de trabajo en el proyecto integrador.}
@@ -355,11 +355,11 @@ import pandas as pd
 from pathlib import Path
 
 # Ejemplo para el Equipo 1 (Relieve Zona Norte):
-carpeta = Path("bases_datos_proyecto_integrador/equipo_01_relieve_zona_norte")
-ruta_base = carpeta / "equipo_01_relieve_zona_norte.parquet"
+carpeta = Path("Unidad_1/bases_datos_proyecto_integrador/equipo_01_relieve_norte")
+ruta_base = carpeta / "equipo_01_relieve_norte.csv"
 
 if ruta_base.exists():
-    df = pd.read_parquet(ruta_base)
+    df = pd.read_csv(ruta_base)
     print("Lectura exitosa de la base de datos!")
     print(f"Filas totales: {df.shape[0]}, Columnas: {df.shape[1]}")
     print(f"Celdas espaciales unicas: {df['cell_id'].nunique()}")
@@ -378,8 +378,8 @@ El repositorio cuenta con una estructura jerárquica estandarizada para las tres
 
 \begin{lstlisting}[language=bash]
 Informacion_matematica/
-|-- bases_datos_proyecto_integrador/     <- Bases oficiales (solo lectura)
 |-- Unidad_1/
+|   |-- bases_datos_proyecto_integrador/ <- Bases oficiales (solo lectura)
 |   |-- 01_formulacion_3pct/             <- Fase 1: Delimitacion, pregunta, hipotesis y variables
 |   |-- 02_avance_4pct/                  <- Fase 2: Scripts, cuadernos exploratorios y tablas
 |   |-- 03_producto_tecnico_10pct/       <- Fase 3: Informe formal escrito en LaTeX y PDF

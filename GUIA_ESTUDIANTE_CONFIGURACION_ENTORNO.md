@@ -207,17 +207,17 @@ pip install numpy scipy pandas matplotlib seaborn jupyter pyarrow fastparquet op
 
 ## 4. Localización y Auditoría de Bases de Datos por Equipo
 
-Todas las bases oficiales están en la carpeta `bases_datos_proyecto_integrador/`. Cada equipo debe trabajar exclusivamente con su base asignada:
+Todas las bases oficiales están en la carpeta `Unidad_1/bases_datos_proyecto_integrador/` (archivos CSV pequeños, de 5 KB a 1 MB). Cada equipo debe trabajar exclusivamente con su base asignada; el significado de cada columna está en `DICCIONARIO_VARIABLES.csv`:
 
 | Equipo | Temática Asignada | Zona Territorial | Subcarpeta Asignada | Dimensión de Datos |
 | :---: | :--- | :---: | :--- | :--- |
-| **Equipo 1** | Relieve y Accesibilidad | **Zona Norte** | `bases_datos_proyecto_integrador/equipo_01_relieve_zona_norte/` | 4.001 celdas, 288.072 reg, 66 col |
-| **Equipo 2** | Relieve y Accesibilidad | **Zona Sur** | `bases_datos_proyecto_integrador/equipo_02_relieve_zona_sur/` | 3.996 celdas, 287.712 reg, 66 col |
-| **Equipo 3** | Cobertura y Suelo | **Zona Norte** | `bases_datos_proyecto_integrador/equipo_03_cobertura_zona_norte/` | 4.001 celdas, 288.072 reg, 53 col |
-| **Equipo 4** | Cobertura y Suelo | **Zona Sur** | `bases_datos_proyecto_integrador/equipo_04_cobertura_zona_sur/` | 3.996 celdas, 287.712 reg, 53 col |
-| **Equipo 5** | Clima y Atmósfera | **Zona Norte** | `bases_datos_proyecto_integrador/equipo_05_clima_zona_norte/` | 4.001 celdas, 288.072 reg, 57 col |
-| **Equipo 6** | Clima y Atmósfera | **Zona Sur** | `bases_datos_proyecto_integrador/equipo_06_clima_zona_sur/` | 3.996 celdas, 287.712 reg, 57 col |
-| **Equipo 7** | Incendios y Severidad | **Cantón Loja Completo** | `bases_datos_proyecto_integrador/equipo_07_incendios_loja_completo/` | 7.997 celdas, 575.784 reg, 41 col |
+| **Equipo 1** | Relieve y Accesibilidad | **Zona Norte** | `Unidad_1/bases_datos_proyecto_integrador/equipo_01_relieve_norte/` | 400 celdas (20×20), 400 reg, 17 col |
+| **Equipo 2** | Relieve y Accesibilidad | **Zona Sur** | `Unidad_1/bases_datos_proyecto_integrador/equipo_02_relieve_sur/` | 400 celdas (20×20), 400 reg, 17 col |
+| **Equipo 3** | Cobertura y Suelo | **Zona Norte** | `Unidad_1/bases_datos_proyecto_integrador/equipo_03_cobertura_norte/` | 100 celdas (10×10) × 72 meses, 7.200 reg, 28 col |
+| **Equipo 4** | Cobertura y Suelo | **Zona Sur** | `Unidad_1/bases_datos_proyecto_integrador/equipo_04_cobertura_sur/` | 100 celdas (10×10) × 72 meses, 7.200 reg, 28 col |
+| **Equipo 5** | Clima y Atmósfera | **Zona Norte** | `Unidad_1/bases_datos_proyecto_integrador/equipo_05_clima_norte/` | 100 celdas (10×10) × 72 meses, 7.200 reg, 22 col |
+| **Equipo 6** | Clima y Atmósfera | **Zona Sur** | `Unidad_1/bases_datos_proyecto_integrador/equipo_06_clima_sur/` | 100 celdas (10×10) × 72 meses, 7.200 reg, 22 col |
+| **Equipo 7** | Incendios y Severidad | **Cantón Loja Completo** | `Unidad_1/bases_datos_proyecto_integrador/equipo_07_incendios_loja/` | Serie mensual (72 reg) y resumen por celda (7.997 reg) |
 
 ### Script de prueba rápida en Python
 Para comprobar que su entorno virtual lee correctamente la base de datos de su equipo, cree un archivo `test_datos.py` y ejecute:
@@ -227,10 +227,10 @@ import pandas as pd
 from pathlib import Path
 
 # Modifique la ruta segun la subcarpeta de su equipo:
-ruta = Path("bases_datos_proyecto_integrador/equipo_01_relieve_zona_norte/equipo_01_relieve_zona_norte.parquet")
+ruta = Path("Unidad_1/bases_datos_proyecto_integrador/equipo_01_relieve_norte/equipo_01_relieve_norte.csv")
 
 if ruta.exists():
-    df = pd.read_parquet(ruta)
+    df = pd.read_csv(ruta)
     print("Lectura exitosa de la base de datos!")
     print(f"Dimensiones: {df.shape[0]} filas x {df.shape[1]} columnas")
     print(f"Celdas unicas de 500m (cell_id): {df['cell_id'].nunique()}")
@@ -248,10 +248,10 @@ El repositorio organiza el ciclo académico en tres unidades, con subcarpetas ho
 
 ```text
 Informacion_matematica/
-├── bases_datos_proyecto_integrador/     <- Bases oficiales (solo lectura)
 ├── requirements.txt                     <- Dependencias cientificas de Python
 ├── GUIA_ESTUDIANTE_CONFIGURACION_ENTORNO.md <- Esta guia practica
 ├── Unidad_1/
+│   ├── bases_datos_proyecto_integrador/ <- Bases oficiales (solo lectura)
 │   ├── 01_formulacion_3pct/             <- Fase 1: Problema, hipotesis, objetivos y variables
 │   ├── 02_avance_4pct/                  <- Fase 2: Scripts, notebooks exploratorios y tablas
 │   ├── 03_producto_tecnico_10pct/       <- Fase 3: Informe formal en LaTeX y PDF (APA 7ma ed.)

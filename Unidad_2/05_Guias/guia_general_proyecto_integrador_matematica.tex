@@ -144,7 +144,7 @@ Capacitar al futuro Ingeniero Ambiental en la deducción matemática formal, el 
   \item \textbf{Restricción estricta del año 2025:} Los datos de 2025 no deben incorporarse; se encuentran estrictamente reservados como conjunto de prueba fuera de tiempo (OOT) para validación científica docente.
   \item \textbf{Integridad de las fuentes de datos:} Los archivos CSV originales \textbf{no deben ser modificados ni sobreescritos}. Toda limpieza, filtrado, normalización y cálculo se realizará mediante código reproducible en Python o R.
   \item \textbf{Repositorio Oficial de Datos en GitHub (Acceso Público Directo):} \\
-  \href{https://github.com/cguillermo79/Informacion_matematica/tree/main/bases_datos_proyecto_integrador}{Repositorio GitHub: \texttt{Informacion\_matematica/bases\_datos\_proyecto\_integrador}}
+  \href{https://github.com/cguillermo79/Informacion_matematica/tree/main/Unidad_1/bases_datos_proyecto_integrador}{Repositorio GitHub: \texttt{Informacion\_matematica/Unidad\_1/bases\_datos\_proyecto\_integrador}}
 \end{itemize}
 
 % ============================================================
@@ -152,7 +152,7 @@ Capacitar al futuro Ingeniero Ambiental en la deducción matemática formal, el 
 % ============================================================
 \section{Asignación Oficial de Equipos, Integrantes y Regla Territorial}
 
-Los 29 estudiantes matriculados en la asignatura han sido organizados en \textbf{7 equipos de trabajo} (seis equipos de 4 integrantes y un equipo de 5 integrantes). Cada equipo tiene asignado un bloque temático, una zona geográfica exclusiva y una base de datos específica:
+Los estudiantes de la asignatura han sido organizados en \textbf{7 equipos de trabajo} (cuatro equipos de 4 integrantes y tres equipos de 5 integrantes). Cada equipo tiene asignado un bloque temático, una zona geográfica exclusiva y una base de datos específica:
 
 \begin{table}[h!]
 \centering
@@ -163,94 +163,97 @@ Los 29 estudiantes matriculados en la asignatura han sido organizados en \textbf
 \textbf{Eq.} & \textbf{Integrantes (Nómina Oficial)} & \textbf{Bloque Temático} & \textbf{Zona} & \textbf{Regla Espacial} & \textbf{Celdas} & \textbf{Carpeta en Repositorio GitHub} \\
 \midrule
 \textbf{1} & 
-\textbullet{} Toledo Merino Jhanine\newline
-\textbullet{} Moreno Vera Mayerly\newline
-\textbullet{} González Castillo Carlos\newline
-\textbullet{} Barreto Zapata Dulce & 
+\textbullet{} Toledo Merino Jhanine Fernanda\newline
+\textbullet{} Moreno Vera Mayerly Stefanny\newline
+\textbullet{} Gonzales Samaniego Mateo Jhoel$^{*}$\newline
+\textbullet{} Barreto Zapata Dulce Isabel & 
 Relieve y accesibilidad: elevación, pendiente, rugosidad y distancias a vías/poblados. & 
 Norte & 
 $\text{centro\_y} \ge 9555250$ & 
-4.001 & 
-\texttt{equipo\_01\_relieve\_} \newline \texttt{zona\_norte/} \newline (288.072 reg, 66 col) \\
+400 & 
+\texttt{equipo\_01\_relieve\_} \newline \texttt{norte/} \newline (400 reg, 17 col) \\
 \midrule
 \textbf{2} & 
-\textbullet{} Saritama Maldonado Bárbara\newline
-\textbullet{} Guamán Aguirre Yulian\newline
-\textbullet{} Cevallos Azanza Kristel\newline
-\textbullet{} Medina Yaguana Ana & 
+\textbullet{} Rojas Vega Yanira Maily\newline
+\textbullet{} Rodríguez Jaramillo Sonia Noemi\newline
+\textbullet{} González Castillo Carlos Daniel\newline
+\textbullet{} Cárdenas Campoverde Diana Patricia & 
 Relieve y accesibilidad: elevación, pendiente, rugosidad y distancias a vías/poblados. & 
 Sur & 
 $\text{centro\_y} < 9555250$ & 
-3.996 & 
-\texttt{equipo\_02\_relieve\_} \newline \texttt{zona\_sur/} \newline (287.712 reg, 66 col) \\
+400 & 
+\texttt{equipo\_02\_relieve\_} \newline \texttt{sur/} \newline (400 reg, 17 col) \\
 \midrule
 \textbf{3} & 
-\textbullet{} Gálvez Cornejo Jamileth\newline
-\textbullet{} Riofrío Medina Yurixi\newline
-\textbullet{} Japón Caillagua Ibelia\newline
-\textbullet{} Chalán Jumbo Shislayne & 
+\textbullet{} Jiménez Troya John David\newline
+\textbullet{} Chamba Mendoza Isidro Francisco\newline
+\textbullet{} Aguilar Arteaga Andy Alcides\newline
+\textbullet{} Chamba Sánchez Giorgi Michael & 
 Cobertura vegetal y uso del suelo: bosque, páramo, agrícola e índices NDVI, NDMI, NBR. & 
 Norte & 
 $\text{centro\_y} \ge 9555250$ & 
-4.001 & 
-\texttt{equipo\_03\_cobertura\_} \newline \texttt{zona\_norte/} \newline (288.072 reg, 53 col) \\
+100 & 
+\texttt{equipo\_03\_cobertura\_} \newline \texttt{norte/} \newline (7.200 reg, 28 col) \\
 \midrule
 \textbf{4} & 
-\textbullet{} Cajamarca Gordillo Carlos\newline
-\textbullet{} Jiménez Macau Kevin\newline
-\textbullet{} Pullaguari Cuenca Nelson\newline
-\textbullet{} Cárdenas Campoverde Diana & 
+\textbullet{} Saritama Maldonado Bárbara Salome\newline
+\textbullet{} Guamán Aguirre Yulian Jeraldine\newline
+\textbullet{} Cevallos Azanza Kristel Pauleth\newline
+\textbullet{} Medina Yaguana Ana Gabriela & 
 Cobertura vegetal y uso del suelo: bosque, páramo, agrícola e índices NDVI, NDMI, NBR. & 
 Sur & 
 $\text{centro\_y} < 9555250$ & 
-3.996 & 
-\texttt{equipo\_04\_cobertura\_} \newline \texttt{zona\_sur/} \newline (287.712 reg, 53 col) \\
+100 & 
+\texttt{equipo\_04\_cobertura\_} \newline \texttt{sur/} \newline (7.200 reg, 28 col) \\
 \midrule
 \textbf{5} & 
-\textbullet{} Rodríguez Jaramillo Sonia\newline
-\textbullet{} Rojas Vega Yanira\newline
-\textbullet{} Verdesoto Ortiz Alejandra\newline
-\textbullet{} Llivisaca Montoya Diana & 
+\textbullet{} Chalán Jumbo Shislayne Azucena\newline
+\textbullet{} Riofrío Medina Yurixi Maribel\newline
+\textbullet{} Gálvez Cornejo Jamileth Stefania\newline
+\textbullet{} Japón Caillagua Ibelia Araceli\newline
+\textbullet{} Pullaguari Cuenca Nelson Sebastian & 
 Clima y condiciones atmosféricas: precipitación CHIRPS, viento y días secos/húmedos. & 
 Norte & 
 $\text{centro\_y} \ge 9555250$ & 
-4.001 & 
-\texttt{equipo\_05\_clima\_} \newline \texttt{zona\_norte/} \newline (288.072 reg, 57 col) \\
+100 & 
+\texttt{equipo\_05\_clima\_} \newline \texttt{norte/} \newline (7.200 reg, 22 col) \\
 \midrule
 \textbf{6} & 
-\textbullet{} Chamba Mendoza Isidro\newline
-\textbullet{} Jiménez Troya John\newline
-\textbullet{} Aguilar Arteaga Andy\newline
-\textbullet{} Chamba Sánchez Giorgi & 
+\textbullet{} Criollo Sara$^{*}$\newline
+\textbullet{} Medina Gualán Lady Lissethe\newline
+\textbullet{} Salazar Valdiviezo Lisseth Alexandra\newline
+\textbullet{} Verdesoto Ortiz Alejandra Nicole\newline
+\textbullet{} Jiménez Macau Kevin Josue & 
 Clima y condiciones atmosféricas: precipitación CHIRPS, viento y días secos/húmedos. & 
 Sur & 
 $\text{centro\_y} < 9555250$ & 
-3.996 & 
-\texttt{equipo\_06\_clima\_} \newline \texttt{zona\_sur/} \newline (287.712 reg, 57 col) \\
+100 & 
+\texttt{equipo\_06\_clima\_} \newline \texttt{sur/} \newline (7.200 reg, 22 col) \\
 \midrule
 \textbf{7} & 
-\textbullet{} Aguilar Franco Adrián\newline
-\textbullet{} Landacay Hidalgo Jorge\newline
-\textbullet{} Medina Gualán Lady\newline
-\textbullet{} Narváez Macas Jhonny\newline
-\textbullet{} Salazar Valdiviezo Lisseth & 
+\textbullet{} Aguilar Franco Adrián Saul\newline
+\textbullet{} Llivisaca Montoya Diana Carolina\newline
+\textbullet{} Narváez Macas Jhonny Francisco\newline
+\textbullet{} Landacay Hidalgo Jorge Isai\newline
+\textbullet{} Cajamarca Gordillo Carlos Daniel & 
 Incendios forestales y riesgo: ocurrencia de fuego VIIRS, severidad y recurrencia. & 
 Cantón Loja Completo & 
 Norte y Sur (Todas las celdas) & 
 7.997 & 
-\texttt{equipo\_07\_incendios\_} \newline \texttt{loja\_completo/} \newline (575.784 reg, 41 col) \\
+\texttt{equipo\_07\_incendios\_} \newline \texttt{loja/} \newline (72 + 7.997 reg) \\
 \bottomrule
 \end{tabularx}
-\caption{Distribución definitiva de equipos, integrantes, zonas y bases autorizadas.}
+\caption{Distribución definitiva de equipos, integrantes, zonas y bases autorizadas. $^{*}$Estudiante que aún no consta en la nómina oficial; su nombre completo se actualizará al confirmarse su registro.}
 \label{tab:distribucion_equipos}
 \end{table}
 
+\clearpage
 \begin{alertbox}[title=Regla Territorial Fundamental para Temas Compartidos]
 \textbf{Los equipos pares (1--2, 3--4, 5--6) comparten bloque temático y variables, pero NO comparten trabajo ni datos:}
 \begin{enumerate}[leftmargin=*,itemsep=1pt]
   \item Cada equipo trabaja de forma \textbf{autónoma} sobre su zona geográfica asignada:
-  \textbf{Zona Norte} ($\text{centro\_y} \ge 9555250.0\,\text{m}$, $4.001$ celdas) o \textbf{Zona Sur} ($\text{centro\_y} < 9555250.0\,\text{m}$, $3.996$ celdas). El Equipo 7 abarca todo el cantón ($7.997$ celdas).
-  \item Las bases ya se encuentran filtradas espacialmente en GitHub. Está prohibido alterar la delimitación o cruzar datos entre zonas.
+  \textbf{Zona Norte} ($\text{centro\_y} \ge 9555250.0\,\text{m}$) o \textbf{Zona Sur} ($\text{centro\_y} < 9555250.0\,\text{m}$), dentro de la ventana de estudio de su base. El Equipo 7 abarca todo el cantón ($7.997$ celdas).
+  \item Las bases ya se encuentran filtradas espacialmente en GitHub. Para que sean manejables y permitan plantear integrales directamente, cada equipo de zona trabaja una \textbf{ventana de estudio} de celdas contiguas y completas: $20\times20$ celdas ($10\times10$\,km, una fila por celda) para relieve y $10\times10$ celdas ($5\times5$\,km) con sus 72 meses para cobertura y clima; incluyen las coordenadas locales \texttt{x\_local\_m}, \texttt{y\_local\_m} ($\Delta x=\Delta y=500$\,m) y el tiempo \texttt{t\_mes} (1 a 72). Detalle en el \texttt{README.md} y el \texttt{DICCIONARIO\_\allowbreak VARIABLES.csv} de las bases. Está prohibido alterar la delimitación o cruzar datos entre zonas.
   \item Cada equipo formula su propia pregunta, diseña sus modelos analíticos y calibra sus parámetros numéricos.
   \item \textbf{Contraste al cierre de cada unidad:} Al concluir la unidad, los equipos pares comparan y discuten sus resultados numéricos (por ejemplo, diferencias de área orográfica, volumen de lluvia o cambio de biomasa entre el Norte y el Sur).
 \end{enumerate}
@@ -269,7 +272,7 @@ A continuación se detalla el trabajo requerido para cada equipo, estructurado e
 \end{guidelinebox}
 
 \begin{itemize}[leftmargin=*,itemsep=1.5pt]
-  \item \textbf{Características de los datos:} Las variables de relieve (\texttt{dem\_mean}, \texttt{slope\_mean}, \texttt{aspect\_sin}, \texttt{dist\_vias\_m}, \texttt{dist\_asentamientos\_m}) son estáticas. El análisis debe realizarse sobre el inventario espacial único de celdas de la zona ($4.001$ celdas en el Norte y $3.996$ celdas en el Sur).
+  \item \textbf{Características de los datos:} Las variables de relieve (elevación \texttt{alos\_elevacion\_m\_mean}, pendiente, orientación, distancias a vías y a asentamientos; la rugosidad se aproxima con \texttt{alos\_elevacion\_m\_std}) son estáticas, por lo que la base trae \textbf{una fila por celda}: $400$ celdas ($20\times20$, $10\times10$\,km) de la zona asignada. Cada fila (\texttt{y\_local\_m} constante) o columna (\texttt{x\_local\_m} constante) de la ventana es un transecto de 20 puntos separados $500$\,m; la ventana contiene desniveles superiores a $1.300$\,m.
   \item \textbf{Desarrollo en la Unidad 1 (Fundamentos y Formulación):}
   \begin{itemize}
     \item Seleccionar un transecto representativo en su zona territorial que conecte una cuenca baja con una cumbre orográfica.
@@ -298,7 +301,7 @@ A continuación se detalla el trabajo requerido para cada equipo, estructurado e
 \end{guidelinebox}
 
 \begin{itemize}[leftmargin=*,itemsep=1.5pt]
-  \item \textbf{Características de los datos:} Se combinan proporciones estáticas de referencia MAATE (bosque nativo, páramo, suelo agropecuario, plantaciones) con series dinámicas mensuales de Sentinel-2 (NDVI, NDMI, NBR, NDWI). Se deben validar rigurosamente los campos de calidad \texttt{disponible\_sentinel\_t1} y \texttt{cobertura\_valida}.
+  \item \textbf{Características de los datos:} Se combinan proporciones estáticas de referencia MAATE (bosque nativo, páramo, suelo agropecuario, plantaciones; columnas \texttt{prop\_*}) con series dinámicas mensuales de Sentinel-2 (NDVI, NDMI, NBR, NDWI; columnas \texttt{s2\_*\_mean}) en $100$ celdas ($10\times10$) durante 72 meses (\texttt{t\_mes} = 1 a 72). Se deben validar rigurosamente los campos de calidad \texttt{sentinel\_t1\_missing} (1 = mes sin índice, por nubes o falta de imagen), \texttt{s2\_cobertura\_valida\_pct} y \texttt{disponible\_sentinel\_t1}.
   \item \textbf{Desarrollo en la Unidad 1 (Fundamentos y Formulación):}
   \begin{itemize}
     \item Modelar la tasa mensual de variación del verdor o cobertura vegetal $r(t) = \frac{dA}{dt}$ en periodos estacionales secos y lluviosos.
@@ -326,7 +329,7 @@ A continuación se detalla el trabajo requerido para cada equipo, estructurado e
 \end{guidelinebox}
 
 \begin{itemize}[leftmargin=*,itemsep=1.5pt]
-  \item \textbf{Características de los datos:} Series mensuales de precipitación CHIRPS (\texttt{chirps\_precip\_mm}), días secos, días húmedos, velocidad del viento CHELSA (\texttt{chelsa\_wind\_speed\_mean}) y resúmenes antecedentes (\texttt{prev2m}, \texttt{prev3m}). Validar \texttt{chirps\_historia\_3m\_completa}.
+  \item \textbf{Características de los datos:} Series mensuales de precipitación CHIRPS (\texttt{chirps\_\allowbreak precipitacion\_\allowbreak acumulada\_\allowbreak t1\_mm}), días secos, días húmedos, velocidad del viento CHELSA (\texttt{chelsa\_\allowbreak sfcwind\_\allowbreak media\_\allowbreak t1\_ms}) y resúmenes antecedentes (\texttt{prev2m}, \texttt{prev3m}) en $100$ celdas ($10\times10$, $25$\,ha cada una) durante 72 meses (\texttt{t\_mes} = 1 a 72). Validar \texttt{chirps\_\allowbreak historia\_\allowbreak 3m\_\allowbreak completa} y \texttt{chelsa\_\allowbreak historia\_\allowbreak 3m\_\allowbreak completa}.
   \item \textbf{Desarrollo en la Unidad 1 (Fundamentos y Formulación):}
   \begin{itemize}
     \item Tratar la precipitación registrada como una tasa de acumulación de lámina de agua por unidad de tiempo: $p(t) = \frac{dh}{dt}\,[\text{mm/mes}]$.
@@ -355,7 +358,7 @@ A continuación se detalla el trabajo requerido para cada equipo, estructurado e
 \end{guidelinebox}
 
 \begin{itemize}[leftmargin=*,itemsep=1.5pt]
-  \item \textbf{Características de los datos:} Cobertura cantonal completa ($7.997$ celdas espaciales y $575.784$ registros). Variable de fuego prioritaria: \texttt{y\_incendio\_ge7\_obs90} junto con el filtro de validez \texttt{y\_principal\_valida}.
+  \item \textbf{Características de los datos:} Cobertura cantonal completa ($7.997$ celdas). Se entregan dos tablas: (1) \texttt{equipo\_07\_\allowbreak serie\_\allowbreak mensual.csv}, con los 72 meses y, para cada mes, las celdas válidas (\texttt{y\_\allowbreak principal\_\allowbreak valida}), las celdas con incendio según la definición principal \texttt{y\_\allowbreak incendio\_\allowbreak ge7\_\allowbreak obs90} y las definiciones alternativas, y el área de esas celdas en hectáreas; y (2) \texttt{equipo\_07\_\allowbreak celdas.csv}, con una fila por celda, sus coordenadas y el número de meses con incendio. El área corresponde a celdas con incendio detectado, no a un área quemada medida en campo.
   \item \textbf{Desarrollo en la Unidad 1 (Fundamentos y Formulación):}
   \begin{itemize}
     \item Determinar la tasa mensual de propagación o número de celdas afectadas por unidad de tiempo: $r_{\text{fuego}}(t)$ [ha/mes].
@@ -624,14 +627,15 @@ Para acceder a los conjuntos de datos autorizados, cada equipo debe ejecutar los
 git clone https://github.com/cguillermo79/Informacion_matematica.git
 
 # 2. Ingresar a la carpeta de bases del proyecto integrador
-cd Informacion_matematica/bases_datos_proyecto_integrador
+cd Informacion_matematica
+cd Unidad_1/bases_datos_proyecto_integrador
 
 # 3. Listar las carpetas y verificar el manifiesto oficial
 ls -lh
 \end{verbatim}
 \end{examplebox}
 
-\noindent Los archivos CSV oficiales de cada equipo están organizados en las carpetas con la nomenclatura \texttt{equipo\_01\_...} hasta \texttt{equipo\_07\_...}. Antes de iniciar el análisis, cada equipo debe verificar que la huella digital SHA-256 de su archivo coincida de manera exacta con la reportada en el archivo \texttt{MANIFIESTO\_BASES.csv}.
+\noindent Los archivos CSV oficiales de cada equipo están organizados en las carpetas con la nomenclatura \texttt{equipo\_01\_\allowbreak ...} hasta \texttt{equipo\_07\_\allowbreak ...}. Antes de iniciar el análisis, cada equipo debe verificar que la huella digital SHA-256 de su archivo coincida de manera exacta con la reportada en el archivo \texttt{MANIFIESTO\_\allowbreak BASES.csv}.
 
 \vspace{0.35cm}
 \begin{center}

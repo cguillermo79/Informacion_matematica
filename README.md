@@ -20,10 +20,10 @@
 
 ```text
 Informacion_matematica/
-├── bases_datos_proyecto_integrador/     <- Bases oficiales de datos (solo lectura)
 ├── requirements.txt                     <- Dependencias cientificas de Python
 ├── GUIA_ESTUDIANTE_CONFIGURACION_ENTORNO.md <- Guia metodologica y practica de terminal
 ├── Unidad_1/
+│   ├── bases_datos_proyecto_integrador/ <- Bases oficiales de datos (solo lectura)
 │   ├── 01_formulacion_3pct/             <- Entrega Fase 1: Delimitacion, hipotesis y variables
 │   ├── 02_avance_4pct/                  <- Entrega Fase 2: Scripts y analisis exploratorio
 │   ├── 03_producto_tecnico_10pct/       <- Entrega Fase 3: Informe formal de Formulacion (LaTeX/PDF)
@@ -47,15 +47,17 @@ Informacion_matematica/
 
 ## 📊 Asignación de Equipos y Bases de Datos
 
-| Equipo | Temática Asignada | Zona Territorial | Subcarpeta en `bases_datos_proyecto_integrador/` |
-| :---: | :--- | :---: | :--- |
-| **Equipo 1** | Relieve y Accesibilidad | Zona Norte | `equipo_01_relieve_zona_norte/` |
-| **Equipo 2** | Relieve y Accesibilidad | Zona Sur | `equipo_02_relieve_zona_sur/` |
-| **Equipo 3** | Cobertura Vegetal y Suelo | Zona Norte | `equipo_03_cobertura_zona_norte/` |
-| **Equipo 4** | Cobertura Vegetal y Suelo | Zona Sur | `equipo_04_cobertura_zona_sur/` |
-| **Equipo 5** | Clima y Atmósfera | Zona Norte | `equipo_05_clima_zona_norte/` |
-| **Equipo 6** | Clima y Atmósfera | Zona Sur | `equipo_06_clima_zona_sur/` |
-| **Equipo 7** | Incendios y Severidad | Cantón Completo | `equipo_07_incendios_loja_completo/` |
+Las bases están en [`Unidad_1/bases_datos_proyecto_integrador/`](Unidad_1/bases_datos_proyecto_integrador/README.md). Son **ventanas de estudio** pequeñas, preparadas para plantear integrales directamente (transectos, series de 72 meses y regiones rectangulares); ver la [guía de las bases](Unidad_1/bases_datos_proyecto_integrador/README.md) y el [diccionario de variables](Unidad_1/bases_datos_proyecto_integrador/DICCIONARIO_VARIABLES.csv).
+
+| Equipo | Temática Asignada | Zona Territorial | Subcarpeta | Tamaño |
+| :---: | :--- | :---: | :--- | :--- |
+| **Equipo 1** | Relieve y Accesibilidad | Zona Norte | `equipo_01_relieve_norte/` | 400 celdas (20×20), 400 reg, 17 col |
+| **Equipo 2** | Relieve y Accesibilidad | Zona Sur | `equipo_02_relieve_sur/` | 400 celdas (20×20), 400 reg, 17 col |
+| **Equipo 3** | Cobertura y Suelo | Zona Norte | `equipo_03_cobertura_norte/` | 100 celdas (10×10) × 72 meses, 7.200 reg, 28 col |
+| **Equipo 4** | Cobertura y Suelo | Zona Sur | `equipo_04_cobertura_sur/` | 100 celdas (10×10) × 72 meses, 7.200 reg, 28 col |
+| **Equipo 5** | Clima y Atmósfera | Zona Norte | `equipo_05_clima_norte/` | 100 celdas (10×10) × 72 meses, 7.200 reg, 22 col |
+| **Equipo 6** | Clima y Atmósfera | Zona Sur | `equipo_06_clima_sur/` | 100 celdas (10×10) × 72 meses, 7.200 reg, 22 col |
+| **Equipo 7** | Incendios y Severidad | Cantón Completo | `equipo_07_incendios_loja/` | Serie mensual (72 reg) y resumen por celda (7.997 reg) |
 
 ---
 

@@ -1,0 +1,65 @@
+variable,equipos,significado,unidad,tipo,valores_esperados
+cell_id,1 a 7,Identificador de la celda de 500 m x 500 m (fila R y columna C de la malla),texto,str,LJ500_Rxxx_Cxxx
+fila,1 a 7,Fila de la celda en la malla; aumenta hacia el norte,índice,int,entero
+columna,1 a 7,Columna de la celda en la malla; aumenta hacia el este,índice,int,entero
+centro_x_m,1 a 7,Coordenada X (este) del centro de la celda en proyección UTM,m,float,positiva
+centro_y_m,1 a 7,Coordenada Y (norte) del centro de la celda en proyección UTM; define la zona,m,float,norte >= 9555250; sur < 9555250
+x_local_m,1 a 6,Distancia este-oeste desde la celda de la esquina suroeste de la ventana de estudio,m,float,"0, 500, 1000, ..."
+y_local_m,1 a 6,Distancia sur-norte desde la celda de la esquina suroeste de la ventana de estudio,m,float,"0, 500, 1000, ..."
+anio,3 a 7,Año del registro,año,int,2019 a 2024
+mes,3 a 7,Mes del registro,mes,int,1 a 12
+anio_mes,3 a 7,Año y mes del registro como texto,texto,str,AAAA-MM
+t_mes,3 a 7,Tiempo en meses desde el inicio del periodo (1 = enero 2019; 72 = diciembre 2024),mes,int,1 a 72
+alos_elevacion_m_mean,1 y 2,Elevación media de la celda (modelo digital ALOS),m,float,mayor que 0
+alos_elevacion_m_std,1 y 2,Desviación estándar de la elevación dentro de la celda (medida de rugosidad),m,float,0 o más
+alos_elevacion_m_min,1 y 2,Elevación mínima dentro de la celda,m,float,mayor que 0
+alos_elevacion_m_max,1 y 2,Elevación máxima dentro de la celda,m,float,mayor que 0
+alos_pendiente_grados_mean,1 y 2,Pendiente media del terreno,grados,float,0 a 90
+alos_northness_mean,1 y 2,Orientación hacia el norte (coseno de la orientación); 1 = ladera al norte y -1 = al sur,adimensional,float,-1 a 1
+alos_eastness_mean,1 y 2,Orientación hacia el este (seno de la orientación); 1 = ladera al este y -1 = al oeste,adimensional,float,-1 a 1
+ghsl_distancia_asentamiento_m_mean,1 y 2,Distancia media al asentamiento (zona construida) más cercano según GHSL,m,float,0 o más
+osm_distancia_vias_m_mean,1 y 2,Distancia media a la vía más cercana según OpenStreetMap,m,float,0 o más
+alos_elevacion_m_coverage,1 y 2,Fracción de la celda con dato válido de ALOS (control de calidad),fracción,float,0 a 1
+prop_bosque_nativo,3 y 4,Proporción del área de la celda con bosque nativo (mapa MAATE 2018; fija en el tiempo),proporción,float,0 a 1
+prop_paramo,3 y 4,Proporción del área con páramo,proporción,float,0 a 1
+prop_vegetacion_natural_arbustiva_herbacea,3 y 4,Proporción del área con vegetación arbustiva y herbácea,proporción,float,0 a 1
+prop_plantacion_forestal,3 y 4,Proporción del área con plantación forestal,proporción,float,0 a 1
+prop_cobertura_agropecuaria_total,3 y 4,Proporción del área con uso agropecuario (cultivos y pastos),proporción,float,0 a 1
+prop_area_poblada,3 y 4,Proporción del área poblada,proporción,float,0 a 1
+prop_infraestructura,3 y 4,Proporción del área con infraestructura,proporción,float,0 a 1
+prop_area_sin_cobertura_vegetal,3 y 4,Proporción del área sin cobertura vegetal,proporción,float,0 a 1
+prop_cuerpo_de_agua_natural,3 y 4,Proporción del área con cuerpos de agua naturales,proporción,float,0 a 1
+suma_prop_maate_9v,3 y 4,Suma de las nueve proporciones anteriores (control de calidad),proporción,float,1
+s2_ndvi_mean,3 y 4,Índice de vegetación NDVI medio del mes (Sentinel-2); mayor valor = vegetación más vigorosa,adimensional,float,-1 a 1; vacío si no hay imagen
+s2_ndmi_mean,3 y 4,Índice de humedad de la vegetación NDMI medio del mes,adimensional,float,-1 a 1; vacío si no hay imagen
+s2_nbr_mean,3 y 4,Índice de área quemada NBR medio del mes,adimensional,float,-1 a 1; vacío si no hay imagen
+s2_ndwi_mean,3 y 4,Índice de agua NDWI medio del mes,adimensional,float,-1 a 1; vacío si no hay imagen
+s2_cobertura_valida_pct,3 y 4,Porcentaje de la celda con píxeles Sentinel-2 válidos (sin nubes),%,float,0 a 100
+disponible_sentinel_t1,3 y 4,Indica si existe un mes fuente de Sentinel-2 para el registro (0 solo en enero de 2019); no garantiza que haya índice,código,int,0 o 1
+sentinel_t1_missing,3 y 4,Indica si falta el índice Sentinel-2 del mes (1 = falta y los índices están vacíos; 0 = hay dato). Filtro principal de calidad,código,int,0 o 1
+chirps_precipitacion_acumulada_t1_mm,5 y 6,Precipitación total del mes (CHIRPS); lámina de agua p(t),mm/mes,float,0 o más
+chirps_precipitacion_acumulada_prev2m_mm,5 y 6,Precipitación total de los 2 meses anteriores al mes del registro,mm,float,0 o más
+chirps_precipitacion_acumulada_prev3m_mm,5 y 6,Precipitación total de los 3 meses anteriores (incluye los 2 anteriores; no sumar con prev2m),mm,float,0 o más
+chirps_precipitacion_maxima_diaria_t1_mm,5 y 6,Mayor precipitación registrada en un solo día del mes,mm/día,float,0 o más
+chirps_dias_secos_t1,5 y 6,Número de días secos del mes (promedio de la celda; puede tener decimales),días,float,0 a 31
+chirps_dias_humedos_t1,5 y 6,Número de días húmedos del mes (promedio de la celda; puede tener decimales),días,float,0 a 31
+chirps_dias_validos_t1,5 y 6,Número de días del mes con dato válido de CHIRPS,días,float,28 a 31
+chirps_historia_3m_completa,5 y 6,Indica si los 3 meses anteriores tienen datos CHIRPS completos (1 = sí; 0 = no),código,int,0 o 1
+chelsa_sfcwind_media_t1_ms,5 y 6,Velocidad media del viento en superficie en el mes (CHELSA),m/s,float,0 o más
+chelsa_sfcwind_maxima_t1_ms,5 y 6,Velocidad máxima del viento en superficie en el mes,m/s,float,0 o más
+chelsa_historia_3m_completa,5 y 6,Indica si los 3 meses anteriores tienen datos CHELSA completos (1 = sí; 0 = no),código,int,0 o 1
+celdas_totales,7 (serie mensual),Número de celdas del cantón en el mes,celdas,int,7997
+celdas_validas,7 (serie mensual),Celdas con y_principal_valida = 1 (observación válida para la definición principal),celdas,int,0 a 7997
+celdas_indeterminadas,7 (serie mensual),Celdas sin observación válida en el mes (celdas_totales - celdas_validas),celdas,int,0 a 7997
+celdas_incendio_ge7_obs90,7 (serie mensual),Celdas con incendio en el mes según la definición principal y_incendio_ge7_obs90,celdas/mes,int,0 o más
+area_incendio_ha_ge7_obs90,7 (serie mensual),Área (dentro del cantón) de las celdas con incendio en el mes; tasa r_fuego(t),ha/mes,float,0 o más
+area_incendio_acumulada_ha_ge7_obs90,7 (serie mensual),Suma acumulada del área anterior desde enero de 2019 (para verificar la integral),ha,float,0 o más
+celdas_incendio_ge8_obs90,7 (serie mensual),Celdas con incendio según la variante con umbral de detección más exigente (ge8),celdas/mes,int,0 o más
+celdas_incendio_ge7_obs80,7 (serie mensual),Celdas con incendio exigiendo al menos 80 % de observabilidad,celdas/mes,int,0 o más
+celdas_incendio_ge7_obs95,7 (serie mensual),Celdas con incendio exigiendo al menos 95 % de observabilidad,celdas/mes,int,0 o más
+celdas_incendio_ge7_obs100,7 (serie mensual),Celdas con incendio exigiendo 100 % de observabilidad,celdas/mes,int,0 o más
+zona,7 (celdas),Zona de la celda según centro_y_m,texto,str,norte o sur
+area_dentro_loja_ha,7 (celdas),Área de la celda dentro del cantón Loja (las celdas del borde tienen menos de 25 ha),ha,float,0 a 25
+meses_validos,7 (celdas),Número de meses 2019-2024 con observación válida en la celda,meses,int,0 a 72
+meses_incendio_ge7_obs90,7 (celdas),Número de meses con incendio en la celda (definición principal),meses,int,0 a 72
+meses_incendio_ge8_obs90,7 (celdas),Número de meses con incendio en la celda (variante ge8),meses,int,0 a 72
